@@ -1,77 +1,149 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        /* ለ Toggle Switch የሚሆን ስታይል */
-        .switch { position: relative; display: inline-block; width: 40px; height: 20px; }
+        /* 1. Toggle Switch (ልክ እንደ DIL BINGO) */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
         .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #30363d; transition: .4s; border-radius: 20px; }
-        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #30363d;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 4px; bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
         input:checked + .slider { background-color: #10b981; }
-        input:checked + .slider:before { transform: translateX(20px); }
+        input:checked + .slider:before { transform: translateX(24px); }
+
+        /* 2. Sound Control Box */
+        .sound-control {
+            background: rgba(22, 27, 34, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #30363d;
+            margin-top: 25px;
+        }
     </style>
 </head>
-<body>
+<body class="scores-page">
     <div class="container">
+        <header style="padding: 15px;">
+            <span class="logo">ETHIO BINGO</span>
+        </header>
+
         <div style="text-align: center; margin-top: 20px;">
-            <div style="width: 80px; height: 80px; background: #0d1117; border: 3px solid #3b82f6; border-radius: 25px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 40px; color: white; font-style: italic; font-weight: bold; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);">T</div>
+            <div style="width: 80px; height: 80px; background: #0d1117; border: 3px solid #3b82f6; border-radius: 25px; margin: 0 auto; display: flex; justify-content: center; align-items: center; font-size: 40px; color: white;">T</div>
             <h2 style="margin: 15px 0 5px;">@Tewdaj</h2>
             <p style="color: #3b82f6; font-size: 10px; font-weight: bold; letter-spacing: 2px;">VERIFIED PLAYER</p>
         </div>
 
         <div style="display: flex; gap: 10px; margin-top: 25px;">
-            <div style="flex: 1; background: rgba(22, 27, 34, 0.8); padding: 15px; border-radius: 20px; border: 1px solid #30363d; text-align: center;">
-                <p style="margin: 0; font-size: 9px; color: #8b949e; font-weight: bold;">MAIN WALLET</p>
+            <div style="flex: 1; background: rgba(22, 27, 34, 0.8); padding: 15px; border-radius: 20px; border: 1px solid #30363d;">
+                <p style="margin: 0; font-size: 10px; color: #8b949e;">MAIN WALLET</p>
                 <h2 style="margin: 5px 0;">2 <span style="font-size: 10px; color: #10b981;">ETB</span></h2>
                 <p style="margin: 0; font-size: 8px; color: #10b981; font-style: italic;">Withdrawable</p>
             </div>
-            <div style="flex: 1; background: rgba(22, 27, 34, 0.8); padding: 15px; border-radius: 20px; border: 1px solid #30363d; text-align: center;">
-                <p style="margin: 0; font-size: 9px; color: #8b949e; font-weight: bold;">PLAY WALLET</p>
-                <h2 style="margin: 5px 0;">2 <span style="font-size: 10px; color: #3b82f6;">ETB</span></h2>
-                <p style="margin: 0; font-size: 8px; color: #3b82f6; font-style: italic;">Game Credits</p>
+            <div style="flex: 1; background: rgba(22, 27, 34, 0.8); padding: 15px; border-radius: 20px; border: 1px solid #30363d;">
+                <p style="margin: 0; font-size: 10px; color: #8b949e;">PLAY WALLET</p>
+                <h2 style="margin: 5px 0;">2 <span style="font-size: 10px; color: #818cf8;">ETB</span></h2>
+                <p style="margin: 0; font-size: 8px; color: #818cf8; font-style: italic;">Game Credits</p>
             </div>
         </div>
 
-        <div style="display: flex; gap: 8px; margin-top: 15px;">
-            <div style="flex: 1; background: rgba(22, 27, 34, 0.6); padding: 10px; border-radius: 15px; border: 1px solid #30363d; text-align: center;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; text-align: center;">
+            <div style="background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
                 <p style="margin: 0; font-size: 8px; color: #8b949e;">GAME WIN</p>
                 <h3 style="margin: 5px 0; color: #f59e0b;">1</h3>
             </div>
-            <div style="flex: 1; background: rgba(22, 27, 34, 0.6); padding: 10px; border-radius: 15px; border: 1px solid #30363d; text-align: center;">
+            <div style="background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
                 <p style="margin: 0; font-size: 8px; color: #8b949e;">TOTAL INVITE</p>
-                <h3 style="margin: 5px 0; color: white;">0</h3>
+                <h3 style="margin: 5px 0; color: #3b82f6;">0</h3>
             </div>
-            <div style="flex: 1; background: rgba(22, 27, 34, 0.6); padding: 10px; border-radius: 15px; border: 1px solid #30363d; text-align: center;">
+            <div style="background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
                 <p style="margin: 0; font-size: 8px; color: #8b949e;">TOTAL EARNED</p>
-                <h3 style="margin: 5px 0; color: white;">0</h3>
+                <h3 style="margin: 5px 0; color: #10b981;">0</h3>
             </div>
         </div>
 
-        <div style="margin-top: 20px; background: rgba(22, 27, 34, 0.8); padding: 15px; border-radius: 20px; border: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <span style="font-size: 24px; color: #10b981;">🔊</span>
+        <div class="sound-control">
+            <div style="display: flex; align-items: center;">
+                <span id="sound-icon" style="font-size: 24px; margin-right: 15px; color: #ef4444;">🔇</span>
                 <div>
-                    <p style="margin: 0; font-weight: bold; font-size: 13px;">SOUND EFFECTS</p>
-                    <p style="margin: 0; font-size: 10px; color: #8b949e;">Toggle game audio</p>
+                    <h4 style="margin: 0; font-size: 14px; color: white;">SOUND EFFECTS</h4>
+                    <p style="margin: 0; font-size: 10px; color: #848d97;">Toggle game audio</p>
                 </div>
             </div>
             <label class="switch">
-                <input type="checkbox" checked>
+                <input type="checkbox" id="sound-toggle" onchange="toggleSound()">
                 <span class="slider"></span>
             </label>
         </div>
 
-        <div class="bottom-nav">
-            <div class="nav-item" onclick="window.location.href='index.html'">🎮<br>GAME</div>
-            <div class="nav-item" onclick="window.location.href='scores.html'">🏆<br>SCORES</div>
-            <div class="nav-item" onclick="window.location.href='history.html'">🕒<br>HISTORY</div>
-            <div class="nav-item" onclick="window.location.href='wallet.html'">💼<br>WALLET</div>
-            <div class="nav-item active" onclick="window.location.href='profile.html'">👤<br>PROFILE</div>
-        </div>
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <span class="icon">🎮</span>GAME
+            </a>
+            <a href="scores.html" class="nav-item">
+                <span class="icon">🏆</span>SCORES
+            </a>
+            <a href="history.html" class="nav-item">
+                <span class="icon">🕒</span>HISTORY
+            </a>
+            <a href="wallet.html" class="nav-item">
+                <span class="icon">💼</span>WALLET
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <span class="icon">👤</span>PROFILE
+            </a>
+        </nav>
     </div>
+
+    <script>
+        function toggleSound() {
+            const isChecked = document.getElementById('sound-toggle').checked;
+            const icon = document.getElementById('sound-icon');
+            if(isChecked) {
+                icon.innerText = "🔊";
+                icon.style.color = "#10b981";
+            } else {
+                icon.innerText = "🔇";
+                icon.style.color = "#ef4444";
+            }
+        }
+
+        // ቴሌግራም መረጃ መውሰጃ
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            document.getElementById('welcome-user').innerText = "Welcome, " + tg.initDataUnsafe.user.first_name;
+        }
+    </script>
 </body>
 </html>
