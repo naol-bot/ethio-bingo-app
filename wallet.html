@@ -2,82 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet - Ethio Bingo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ethio Bingo - My Wallet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="scores-page">
-    <div class="container">
-        <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
-            <span class="logo">ETHIO BINGO</span>
-            <span style="background: rgba(99, 102, 241, 0.2); color: #818cf8; padding: 5px 12px; border-radius: 20px; font-size: 10px; font-weight: bold;">VERIFIED</span>
-        </header>
+<body class="bg-[#0f0c29] text-white min-h-screen flex flex-col font-sans overflow-x-hidden m-0 p-0">
 
-        <div style="padding: 0 15px;">
-            <h2 style="margin-bottom: 5px;">MY WALLET</h2>
-            <p style="font-size: 10px; color: #848d97; margin-bottom: 20px;">251979596741</p>
+    <div class="p-6 w-full flex justify-between items-start">
+        <div>
+            <h1 class="text-2xl font-black tracking-tight uppercase">My Wallet</h1>
+            <p class="text-[10px] font-bold text-gray-500 mt-1">251946609573</p>
+        </div>
+        <button class="bg-white/10 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest text-blue-400 uppercase border border-white/5">Verified</button>
+    </div>
 
-            <div class="wallet-grid">
-                <div class="wallet-box main-w">
-                    <h4>🏆 Main Wallet</h4>
-                    <p>2 <span style="font-size: 12px;">ETB</span></p>
+    <div class="flex-grow px-4 pb-32">
+        
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-[1.5rem] p-5">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-emerald-500">🏆</span>
+                    <p class="text-[9px] text-emerald-500 font-black uppercase tracking-wider">Main Wallet</p>
                 </div>
-                <div class="wallet-box play-w">
-                    <h4>🎮 Play Wallet</h4>
-                    <p>2 <span style="font-size: 12px;">ETB</span></p>
+                <div class="flex items-baseline gap-1">
+                    <span id="mainBalance" class="text-2xl font-black">0</span>
+                    <span class="text-[10px] text-emerald-500/60 font-bold">ETB</span>
                 </div>
             </div>
-
-            <div class="total-available">
-                <span style="color: #848d97;">TOTAL AVAILABLE</span>
-                <span style="font-weight: bold;">4 ETB</span>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                <span style="font-size: 12px; color: #848d97;">RECENT ACTIVITY</span>
-                <span style="font-size: 12px; color: #818cf8;">4 TOTAL</span>
-            </div>
-
-            <div class="activity-list">
-                <div class="activity-item">
-                    <div class="icon-box up">↑</div>
-                    <div class="act-info">
-                        <h5>WITHDRAW COMPLETED</h5>
-                        <span>VIA: TELE</span>
-                    </div>
-                    <div class="act-amount neg">-500 ETB<br><span style="font-size: 9px; font-weight: normal; color: #848d97;">15/3/2026</span></div>
+            <div class="bg-indigo-500/10 border border-indigo-500/20 rounded-[1.5rem] p-5">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-indigo-400">🎮</span>
+                    <p class="text-[9px] text-indigo-400 font-black uppercase tracking-wider">Play Wallet</p>
                 </div>
-
-                <div class="activity-item">
-                    <div class="icon-box down">↓</div>
-                    <div class="act-info">
-                        <h5>DEPOSIT APPROVED</h5>
-                        <span>REF: DCG3U7109H</span>
-                    </div>
-                    <div class="act-amount pos">+54 ETB<br><span style="font-size: 9px; font-weight: normal; color: #848d97;">16/3/2026</span></div>
+                <div class="flex items-baseline gap-1">
+                    <span id="playBalance" class="text-2xl font-black">0</span>
+                    <span class="text-[10px] text-indigo-400/60 font-bold">ETB</span>
                 </div>
             </div>
         </div>
 
-        <p style="text-align: center; font-size: 10px; color: #30363d; margin-top: 30px;">MANAGE YOUR FUNDS IN THE TELEGRAM BOT CHAT</p>
+        <div class="bg-white/5 border border-white/10 rounded-[1.2rem] p-4 flex justify-between items-center mb-8">
+            <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Total Available</p>
+            <p class="text-lg font-black">0 <span class="text-[10px] text-gray-500">ETB</span></p>
+        </div>
 
-        <nav class="bottom-nav">
-    <a href="index.html" class="nav-item">
-        <span class="icon">🎮</span>GAME
-    </a>
-    <a href="scores.html" class="nav-item">
-        <span class="icon">🏆</span>SCORES
-    </a>
-    <a href="history.html" class="nav-item">
-        <span class="icon">🕒</span>HISTORY
-    </a>
-    <a href="wallet.html" class="nav-item active">
-        <span class="icon">💼</span>WALLET
-    </a>
-    <a href="profile.html" class="nav-item">
-        <span class="icon">👤</span>PROFILE
-    </a>
-</nav>
+        <div class="flex justify-between items-center mb-6 px-1">
+            <h2 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Recent Activity</h2>
+            <span class="text-[9px] font-black text-indigo-400 uppercase tracking-widest">26 Total</span>
+        </div>
+
+        <div id="walletActivity" class="space-y-3">
+            <p class="text-center py-10 opacity-30 text-xs">Loading activity...</p>
+        </div>
     </div>
+
+    <div class="nav-bar fixed bottom-0 w-full flex justify-around py-4 pb-8 bg-[#0a0a1f] border-t border-gray-900 z-50">
+        <a href="index.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">🎮</span>
+            <span class="text-[9px] font-bold mt-1">GAME</span>
+        </a>
+        <a href="scores.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">🏆</span>
+            <span class="text-[9px] font-bold mt-1">SCORES</span>
+        </a>
+        <a href="history.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">🕒</span>
+            <span class="text-[9px] font-bold mt-1">HISTORY</span>
+        </a>
+        <a href="wallet.html" class="nav-item active flex flex-col items-center">
+            <span class="text-xl">💼</span>
+            <span class="text-[9px] font-bold mt-1">WALLET</span>
+            <div class="active-dot"></div>
+        </a>
+        <a href="profile.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">👤</span>
+            <span class="text-[9px] font-bold mt-1">PROFILE</span>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
