@@ -63,3 +63,28 @@
     margin-top: 4px;
     box-shadow: 0 0 8px #00c896;
 }
+/* --- Scores Page Styles --- */
+.user-rank-gradient {
+    background: linear-gradient(to right, #5a32fa, #8c4cff);
+}
+
+.score-card {
+    background-color: rgba(22, 22, 51, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-container {
+    background-color: #161633;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-active {
+    background-color: #2a2a5a;
+    color: white !important;
+}
+
+/* Rank Badge Colors */
+.rank-gold { background-color: #eab308; color: #0f0c29; }
+.rank-silver { background-color: #cbd5e1; color: #0f0c29; }
+.rank-bronze { background-color: #f97316; color: #0f0c29; }
+.rank-default { background-color: #1e1e3f; color: #6b7280; }
