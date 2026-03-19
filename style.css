@@ -1,103 +1,85 @@
-/* አጠቃላይ ገጽታ */
-body { 
-    background-color: #0f172a; 
-    color: white; 
-    font-family: sans-serif; 
-    margin: 0; 
-    padding: 0; 
-    display: flex; 
-    justify-content: center;
-}
-
-.container { 
-    width: 100%; 
-    max-width: 450px; 
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column; 
-    padding: 20px; 
-    box-sizing: border-box; 
-}
-
-/* Header */
-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.logo { font-weight: bold; color: #f59e0b; }
-
-.rules-btn { 
-    background: #334155; 
-    color: white; 
-    border: none; 
-    padding: 5px 15px; 
-    border-radius: 5px; 
-}
-
-/* Main Content */
-.main-content { flex: 1; text-align: center; margin-top: 50px; }
-
-.brand-name { color: #f59e0b; font-size: 3rem; margin: 0; }
-
-.yellow-line { 
-    width: 50px; 
-    height: 3px; 
-    background: #f59e0b; 
-    margin: 10px auto; 
-}
-
-.play-btn { 
-    background: #15803d; 
-    color: white; 
-    border: none; 
-    width: 100%; 
-    padding: 20px; 
-    border-radius: 50px; 
-    font-size: 1.5rem; 
-    font-weight: bold; 
-    margin: 40px 0;
-}
-
-.balance-section h2 { font-size: 3rem; margin: 10px 0; }
-
-/* Rules Modal (ሳጥኑ) */
-.modal {
-    display: none; 
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.8);
-    z-index: 2000;
-}
-
-.modal-content {
-    background: #1e293b;
-    margin: 20% auto;
+/* My Rank Card */
+.my-rank-card {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    border-radius: 20px;
     padding: 20px;
-    width: 80%;
-    border-radius: 15px;
-    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.close { position: absolute; right: 20px; font-size: 25px; cursor: pointer; }
-
-/* Bottom Nav (ኢሞጂዎች) */
-.bottom-nav {
-    position: fixed; 
-    bottom: 0; left: 0; right: 0;
-    background: #111827;
-    display: flex; 
-    justify-content: space-around; 
-    padding: 10px 0;
+.rank-avatar {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 15px;
 }
 
-.nav-item { 
-    text-align: center; 
-    font-size: 12px; 
-    color: #94a3b8; 
+.rank-info { flex: 1; text-align: left; }
+.rank-label { font-size: 10px; margin: 0; opacity: 0.8; }
+.rank-info h3 { margin: 2px 0; font-size: 18px; }
+.unranked { font-size: 10px; margin: 0; opacity: 0.7; }
+
+.played-stat { text-align: center; }
+.stat-num { display: block; font-size: 20px; font-weight: bold; }
+.stat-label { font-size: 10px; }
+
+/* Tabs */
+.tab-container {
+    background: #1e293b;
+    border-radius: 12px;
+    display: flex;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.nav-item.active { color: #22c55e; font-weight: bold; }
+.tab-btn.active {
+    background: #334155;
+    color: white;
+}
+
+/* Leaderboard Rows */
+.list-title { text-align: left; font-size: 12px; color: #64748b; margin-bottom: 10px; }
+
+.player-row {
+    background: #1e293b;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 8px;
+}
+
+.rank-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.gold { background: #f59e0b; color: black; }
+.silver { background: #94a3b8; color: black; }
+.bronze { background: #b45309; color: white; }
+
+.user-handle { flex: 1; text-align: left; }
+.game-count { font-size: 12px; color: #94a3b8; }
