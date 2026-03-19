@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scores - Ethio Bingo</title>
+    <title>Leaderboard - Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
-        <header>
-            <span class="logo">LEADERBOARD</span>
-            <a href="index.html" style="color: white; text-decoration: none;"><i class="fas fa-times"></i></a>
-        </header>
-
-        <main class="main-content">
-            <div class="score-list">
-                <div class="score-item">
-                    <span>1. አበበ (Abebe)</span>
-                    <span class="points">5,000 ETB</span>
-                </div>
-                <div class="score-item">
-                    <span>2. ሳራ (Sara)</span>
-                    <span class="points">3,500 ETB</span>
-                </div>
-                <div class="score-item">
-                    <span>3. ዮናስ (Yonas)</span>
-                    <span class="points">2,100 ETB</span>
-                </div>
+        <div class="my-rank-card">
+            <div class="rank-avatar">-</div>
+            <div class="rank-info">
+                <p class="rank-label">MY RANK</p>
+                <h3 id="player-username">@USER</h3>
+                <p class="unranked">UNRANKED</p>
             </div>
-        </main>
+            <div class="played-stat">
+                <span class="stat-num">0</span>
+                <span class="stat-label">PLAYED</span>
+            </div>
+        </div>
+
+        <div class="tab-container">
+            <button class="tab-btn active">DAILY</button>
+            <button class="tab-btn">WEEKLY</button>
+        </div>
+
+        <p class="list-title">TOP 10 PLAYERS</p>
+
+        <main class="score-list">
+            <div class="player-row">
+                <span class="rank-badge gold">1</span>
+                <span class="user-handle">@AYAA</span>
+                <span class="game-count">45 GAMES</span>
+            </div>
+            <div class="player-row">
+                <span class="rank-badge silver">2</span>
+                <span class="user-handle">@ናርዶስ_ፈቃዱ</span>
+                <span class="game-count">27 GAMES</span>
+            </div>
+            <div class="player-row">
+                <span class="rank-badge bronze">3</span>
+                <span class="user-handle">@CHALA</span>
+                <span class="game-count">21 GAMES</span>
+            </div>
+            </main>
 
         <nav class="bottom-nav">
-            <a href="index.html" class="nav-item">
-                <i class="fas fa-gamepad"></i>
-                <span>GAME</span>
-            </a>
-            <a href="scores.html" class="nav-item active">
-                <i class="fas fa-trophy"></i>
-                <span>SCORES</span>
-            </a>
-            <a href="history.html" class="nav-item">
-                <i class="fas fa-history"></i>
-                <span>HISTORY</span>
-            </a>
-            <a href="wallet.html" class="nav-item">
-                <i class="fas fa-wallet"></i>
-                <span>WALLET</span>
-            </a>
-            <a href="profile.html" class="nav-item">
-                <i class="fas fa-user"></i>
-                <span>PROFILE</span>
-            </a>
+            <div class="nav-item" onclick="window.location.href='index.html'">🎮<br>GAME</div>
+            <div class="nav-item active" onclick="window.location.href='scores.html'">🏆<br>SCORES</div>
+            <div class="nav-item" onclick="window.location.href='history.html'">🕒<br>HISTORY</div>
+            <div class="nav-item" onclick="window.location.href='wallet.html'">💼<br>WALLET</div>
+            <div class="nav-item" onclick="window.location.href='profile.html'">👤<br>PROFILE</div>
         </nav>
     </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            document.getElementById('player-username').innerText = "@" + (tg.initDataUnsafe.user.username || tg.initDataUnsafe.user.first_name);
+        }
+    </script>
 </body>
 </html>
