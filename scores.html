@@ -5,107 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard - Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body class="scores-page">
     <div class="container">
         <header style="padding: 15px;">
-            <span class="logo" style="color: #f59e0b; font-weight: bold; font-size: 1.2rem;">ETHIO BINGO</span>
+            <span class="logo">ETHIO BINGO</span>
         </header>
 
-        <div class="my-rank-header">
-            <div class="user-box">
-                <div class="user-avatar">👤</div>
-                <div class="user-info">
-                    <p>MY RANK</p>
-                    <h3 id="player-user">@USER</h3>
-                    <p>UNRANKED</p>
+        <main style="padding: 0 15px;">
+            <h2 style="margin-bottom: 20px;">TOP PLAYERS</h2>
+
+            <div class="tabs" style="display: flex; background: #161b22; border-radius: 12px; padding: 5px; margin-bottom: 20px;">
+                <button class="tab-btn active" style="flex: 1; padding: 10px; border: none; border-radius: 8px; background: #1e293b; color: white; cursor: pointer;">DAILY</button>
+                <button class="tab-btn" style="flex: 1; padding: 10px; border: none; border-radius: 8px; background: transparent; color: #64748b; cursor: pointer;">WEEKLY</button>
+            </div>
+
+            <div class="leaderboard-list">
+                <div class="player-card" style="display: flex; align-items: center; background: #161b22; padding: 15px; border-radius: 15px; margin-bottom: 10px; border: 1px solid #30363d;">
+                    <div style="width: 30px; height: 30px; background: #f59e0b; color: black; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; margin-right: 15px;">1</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; font-size: 14px;">@Tewdaj</h4>
+                        <span style="font-size: 10px; color: #848d97;">120 GAMES WON</span>
+                    </div>
+                    <div style="color: #10b981; font-weight: bold;">500 ETB</div>
+                </div>
+
+                <div class="player-card" style="display: flex; align-items: center; background: #161b22; padding: 15px; border-radius: 15px; margin-bottom: 10px; border: 1px solid #30363d;">
+                    <div style="width: 30px; height: 30px; background: #94a3b8; color: black; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; margin-right: 15px;">2</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; font-size: 14px;">@Sara_B</h4>
+                        <span style="font-size: 10px; color: #848d97;">85 GAMES WON</span>
+                    </div>
+                    <div style="color: #10b981; font-weight: bold;">350 ETB</div>
+                </div>
+
+                <div class="player-card" style="display: flex; align-items: center; background: #161b22; padding: 15px; border-radius: 15px; margin-bottom: 10px; border: 1px solid #30363d;">
+                    <div style="width: 30px; height: 30px; background: #b45309; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; margin-right: 15px;">3</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; font-size: 14px;">@Abel_K</h4>
+                        <span style="font-size: 10px; color: #848d97;">60 GAMES WON</span>
+                    </div>
+                    <div style="color: #10b981; font-weight: bold;">200 ETB</div>
                 </div>
             </div>
-            <div class="played-count">
-                <b>0</b>
-                <span>PLAYED</span>
-            </div>
-        </div>
-
-        <div class="tab-container">
-            <button id="daily-btn" class="tab-btn active" onclick="changeTab('daily')">DAILY</button>
-            <button id="weekly-btn" class="tab-btn" onclick="changeTab('weekly')">WEEKLY</button>
-        </div>
-
-        <p style="padding-left: 20px; color: #848d97; font-size: 0.8rem; margin-bottom: 15px;">TOP 10 PLAYERS</p>
-
-        <div id="daily-list" class="leaderboard-list">
-            <div class="player-card">
-                <div class="rank-badge gold">1</div>
-                <span class="player-name">@AYAA</span>
-                <div class="player-score"><b>45</b><small>GAMES</small></div>
-            </div>
-            <div class="player-card">
-                <div class="rank-badge silver">2</div>
-                <span class="player-name">@ናርዶስ_ፈቃዱ</span>
-                <div class="player-score"><b>27</b><small>GAMES</small></div>
-            </div>
-            <div class="player-card">
-                <div class="rank-badge bronze">3</div>
-                <span class="player-name">@CHALA</span>
-                <div class="player-score"><b>21</b><small>GAMES</small></div>
-            </div>
-        </div>
-
-        <div id="weekly-list" class="leaderboard-list" style="display: none;">
-            <div class="player-card">
-                <div class="rank-badge gold">1</div>
-                <span class="player-name">@WONDIMU</span>
-                <div class="player-score"><b>120</b><small>GAMES</small></div>
-            </div>
-            <div class="player-card">
-                <div class="rank-badge silver">2</div>
-                <span class="player-name">@ETHIO_KING</span>
-                <div class="player-score"><b>98</b><small>GAMES</small></div>
-            </div>
-            <div class="player-card">
-                <div class="rank-badge bronze">3</div>
-                <span class="player-name">@SARA_B</span>
-                <div class="player-score"><b>85</b><small>GAMES</small></div>
-            </div>
-        </div>
+        </main>
 
         <nav class="bottom-nav">
-            <a href="index.html" class="nav-item">🎮<br>GAME</a>
-            <a href="scores.html" class="nav-item active">🏆<br>SCORES</a>
-            <a href="history.html" class="nav-item">🕒<br>HISTORY</a>
-            <a href="wallet.html" class="nav-item">💼<br>WALLET</a>
-            <a href="profile.html" class="nav-item">👤<br>PROFILE</a>
+            <a href="index.html" class="nav-item">
+                <span class="icon">🎮</span>GAME
+            </a>
+            <a href="scores.html" class="nav-item active">
+                <span class="icon">🏆</span>SCORES
+            </a>
+            <a href="history.html" class="nav-item">
+                <span class="icon">🕒</span>HISTORY
+            </a>
+            <a href="wallet.html" class="nav-item">
+                <span class="icon">💼</span>WALLET
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="icon">👤</span>PROFILE
+            </a>
         </nav>
     </div>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        // ታቦቹን ለመቀያየር የሚያገለግል ፈንክሽን
-        function changeTab(type) {
-            const dailyList = document.getElementById('daily-list');
-            const weeklyList = document.getElementById('weekly-list');
-            const dailyBtn = document.getElementById('daily-btn');
-            const weeklyBtn = document.getElementById('weekly-btn');
-
-            if (type === 'daily') {
-                dailyList.style.display = 'block';
-                weeklyList.style.display = 'none';
-                dailyBtn.classList.add('active');
-                weeklyBtn.classList.remove('active');
-            } else {
-                dailyList.style.display = 'none';
-                weeklyList.style.display = 'block';
-                weeklyBtn.classList.add('active');
-                dailyBtn.classList.remove('active');
-            }
-        }
-
-        // የተጫዋቹን ስም ከቴሌግራም መውሰጃ
+        // ቴሌግራም መረጃ
         let tg = window.Telegram.WebApp;
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            document.getElementById('player-user').innerText = "@" + (tg.initDataUnsafe.user.username || tg.initDataUnsafe.user.first_name).toUpperCase();
-        }
+        tg.expand();
     </script>
 </body>
 </html>
