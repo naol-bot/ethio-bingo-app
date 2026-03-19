@@ -46,3 +46,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// በገጹ ላይ ያሉትን ሁሉንም የ toggle ቁልፎች ፈልግ
+const setupToggles = () => {
+    const container = document.querySelector('.toggle-container');
+    if (!container) return;
+
+    const buttons = container.querySelectorAll('button');
+    
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // መጀመሪያ በሁለቱም ላይ ያለውን የነቃ ከለር (toggle-active) አጥፋ
+            buttons.forEach(b => {
+                b.classList.remove('toggle-active');
+                b.classList.add('text-gray-500');
+            });
+            
+            // አሁን የተነካውን ቁልፍ አብራ
+            this.classList.add('toggle-active');
+            this.classList.remove('text-gray-500');
+            
+            // እዚህ ጋር የዝርዝር መረጃውን መቀየር ትችላለህ
+            console.log(this.innerText + " ተመርጧል");
+        });
+    });
+};
+
+// ገጹ ተጭኖ ሲያልቅ ስራውን ይጀምር
+document.addEventListener('DOMContentLoaded', setupToggles);
