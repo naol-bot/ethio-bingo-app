@@ -2,148 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Ethio Bingo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ethio Bingo - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        /* 1. Toggle Switch (ልክ እንደ DIL BINGO) */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 26px;
-        }
-
-        .switch input { opacity: 0; width: 0; height: 0; }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #30363d;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px; width: 18px;
-            left: 4px; bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider { background-color: #10b981; }
-        input:checked + .slider:before { transform: translateX(24px); }
-
-        /* 2. Sound Control Box */
-        .sound-control {
-            background: rgba(22, 27, 34, 0.8);
-            padding: 20px;
-            border-radius: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #30363d;
-            margin-top: 25px;
-        }
-    </style>
 </head>
-<body class="scores-page">
-    <div class="container">
-        <header style="padding: 15px;">
-            <span class="logo">ETHIO BINGO</span>
-        </header>
+<body class="bg-[#0f0c29] text-white min-h-screen flex flex-col font-sans overflow-x-hidden m-0 p-0">
 
-        <div style="text-align: center; margin-top: 20px;">
-            <div style="width: 80px; height: 80px; background: #0d1117; border: 3px solid #3b82f6; border-radius: 25px; margin: 0 auto; display: flex; justify-content: center; align-items: center; font-size: 40px; color: white;">T</div>
-            <h2 style="margin: 15px 0 5px;">@Tewdaj</h2>
-            <p style="color: #3b82f6; font-size: 10px; font-weight: bold; letter-spacing: 2px;">VERIFIED PLAYER</p>
+    <div class="flex-grow px-4 pt-10 pb-32">
+        <div class="flex flex-col items-center mb-8">
+            <div class="w-24 h-24 rounded-[2rem] border-2 border-purple-500 flex items-center justify-center bg-[#1a1640] mb-4 shadow-xl shadow-purple-500/20">
+                <span class="text-4xl font-black italic">W</span>
+            </div>
+            <h2 class="text-2xl font-black italic">@wase</h2>
+            <p class="text-[10px] font-bold text-blue-400 tracking-[0.2em] uppercase mt-1">Verified Player</p>
         </div>
 
-        <div style="display: flex; gap: 10px; margin-top: 25px;">
-            <div style="flex: 1; background: rgba(22, 27, 34, 0.8); padding: 15px; border-radius: 20px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 10px; color: #8b949e;">MAIN WALLET</p>
-                <h2 style="margin: 5px 0;">2 <span style="font-size: 10px; color: #10b981;">ETB</span></h2>
-                <p style="margin: 0; font-size: 8px; color: #10b981; font-style: italic;">Withdrawable</p>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-[#161336] rounded-[1.5rem] p-5 text-center border border-white/5">
+                <p class="text-[9px] text-gray-500 font-black uppercase mb-2">Main Wallet</p>
+                <p class="text-xl font-black">0 <span class="text-[10px] text-emerald-500">ETB</span></p>
+                <p class="text-[8px] text-emerald-500/60 font-bold mt-1 italic">Withdrawable</p>
             </div>
-            <div style="flex: 1; background: rgba(22, 27, 34, 0.8); padding: 15px; border-radius: 20px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 10px; color: #8b949e;">PLAY WALLET</p>
-                <h2 style="margin: 5px 0;">2 <span style="font-size: 10px; color: #818cf8;">ETB</span></h2>
-                <p style="margin: 0; font-size: 8px; color: #818cf8; font-style: italic;">Game Credits</p>
-            </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; text-align: center;">
-            <div style="background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 8px; color: #8b949e;">GAME WIN</p>
-                <h3 style="margin: 5px 0; color: #f59e0b;">1</h3>
-            </div>
-            <div style="background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 8px; color: #8b949e;">TOTAL INVITE</p>
-                <h3 style="margin: 5px 0; color: #3b82f6;">0</h3>
-            </div>
-            <div style="background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 8px; color: #8b949e;">TOTAL EARNED</p>
-                <h3 style="margin: 5px 0; color: #10b981;">0</h3>
+            <div class="bg-[#161336] rounded-[1.5rem] p-5 text-center border border-white/5">
+                <p class="text-[9px] text-gray-500 font-black uppercase mb-2">Play Wallet</p>
+                <p class="text-xl font-black">0 <span class="text-[10px] text-blue-400">ETB</span></p>
+                <p class="text-[8px] text-blue-400/60 font-bold mt-1 italic">Game Credits</p>
             </div>
         </div>
 
-        <div class="sound-control">
-            <div style="display: flex; align-items: center;">
-                <span id="sound-icon" style="font-size: 24px; margin-right: 15px; color: #ef4444;">🔇</span>
+        <div class="grid grid-cols-3 gap-3 mb-8">
+            <div class="bg-[#161336] rounded-[1.2rem] p-4 text-center border border-white/5">
+                <p class="text-[8px] text-gray-500 font-black uppercase mb-1">Game Win</p>
+                <p class="text-lg font-black text-yellow-500">32</p>
+            </div>
+            <div class="bg-[#161336] rounded-[1.2rem] p-4 text-center border border-white/5">
+                <p class="text-[8px] text-gray-500 font-black uppercase mb-1">Total Invite</p>
+                <p class="text-lg font-black text-emerald-500">0</p>
+            </div>
+            <div class="bg-[#161336] rounded-[1.2rem] p-4 text-center border border-white/5">
+                <p class="text-[8px] text-gray-500 font-black uppercase mb-1">Total Earned</p>
+                <p class="text-lg font-black text-cyan-400">0</p>
+            </div>
+        </div>
+
+        <div class="bg-[#161336] rounded-[2rem] p-5 flex justify-between items-center border border-white/5 shadow-inner">
+            <div class="flex items-center gap-4">
+                <div id="soundIconBg" class="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-500 transition-colors duration-300">
+                    <span id="soundIconText" class="text-xl">🔊</span>
+                </div>
                 <div>
-                    <h4 style="margin: 0; font-size: 14px; color: white;">SOUND EFFECTS</h4>
-                    <p style="margin: 0; font-size: 10px; color: #848d97;">Toggle game audio</p>
+                    <h4 class="font-black text-sm tracking-wide uppercase">Sound Effects</h4>
+                    <p class="text-[9px] text-gray-500 font-bold">Toggle game audio</p>
                 </div>
             </div>
-            <label class="switch">
-                <input type="checkbox" id="sound-toggle" onchange="toggleSound()">
-                <span class="slider"></span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="soundToggle" class="sr-only peer" checked>
+                <div class="w-14 h-8 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-emerald-500"></div>
             </label>
         </div>
-
-        <nav class="bottom-nav">
-            <a href="index.html" class="nav-item">
-                <span class="icon">🎮</span>GAME
-            </a>
-            <a href="scores.html" class="nav-item">
-                <span class="icon">🏆</span>SCORES
-            </a>
-            <a href="history.html" class="nav-item">
-                <span class="icon">🕒</span>HISTORY
-            </a>
-            <a href="wallet.html" class="nav-item">
-                <span class="icon">💼</span>WALLET
-            </a>
-            <a href="profile.html" class="nav-item active">
-                <span class="icon">👤</span>PROFILE
-            </a>
-        </nav>
     </div>
 
-    <script>
-        function toggleSound() {
-            const isChecked = document.getElementById('sound-toggle').checked;
-            const icon = document.getElementById('sound-icon');
-            if(isChecked) {
-                icon.innerText = "🔊";
-                icon.style.color = "#10b981";
-            } else {
-                icon.innerText = "🔇";
-                icon.style.color = "#ef4444";
-            }
-        }
+    <div class="nav-bar fixed bottom-0 w-full flex justify-around py-4 pb-8 bg-[#0a0a1f] border-t border-gray-900 z-50">
+        <a href="index.html" class="nav-item flex flex-col items-center"><span class="text-xl">🎮</span><span class="text-[9px] font-bold mt-1">GAME</span></a>
+        <a href="scores.html" class="nav-item flex flex-col items-center"><span class="text-xl">🏆</span><span class="text-[9px] font-bold mt-1">SCORES</span></a>
+        <a href="history.html" class="nav-item flex flex-col items-center"><span class="text-xl">🕒</span><span class="text-[9px] font-bold mt-1">HISTORY</span></a>
+        <a href="wallet.html" class="nav-item flex flex-col items-center"><span class="text-xl">💼</span><span class="text-[9px] font-bold mt-1">WALLET</span></a>
+        <a href="profile.html" class="nav-item active flex flex-col items-center">
+            <span class="text-xl">👤</span>
+            <span class="text-[9px] font-bold mt-1">PROFILE</span>
+            <div class="active-dot"></div>
+        </a>
+    </div>
 
-        // ቴሌግራም መረጃ መውሰጃ
-        let tg = window.Telegram.WebApp;
-        tg.expand();
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            document.getElementById('welcome-user').innerText = "Welcome, " + tg.initDataUnsafe.user.first_name;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
