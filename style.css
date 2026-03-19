@@ -1,80 +1,67 @@
 body {
-    background-color: #0d1117;
+    background-color: #0f172a;
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
 }
 
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     height: 100vh;
-    padding: 20px;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 50px;
 }
 
-.rules-btn {
-    background: #21262d;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 15px;
-}
-
-.main-card {
-    background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
-    border: 1px solid #30363d;
-    border-radius: 20px;
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.main-title {
-    color: #ff9900;
-    font-size: 32px;
-    margin: 10px 0;
-    text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+.brand-name {
+    color: #f59e0b;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
 }
 
 .play-btn {
-    background-color: #238636;
+    background-color: #15803d;
     color: white;
     border: none;
-    width: 80%;
     padding: 15px;
-    border-radius: 30px;
-    font-size: 18px;
+    border-radius: 50px;
+    font-size: 1.2rem;
     font-weight: bold;
+    cursor: pointer;
     margin: 20px 0;
 }
 
 .bottom-nav {
     position: fixed;
     bottom: 0;
-    width: 100%;
-    max-width: 400px;
+    left: 0;
+    right: 0;
+    background-color: #1e293b;
     display: flex;
     justify-content: space-around;
-    background: #161b22;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 
 .nav-item {
-    font-size: 10px;
-    text-align: center;
-    color: #8b949e;
+    text-decoration: none;
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
 }
 
-.active {
-    color: #238636;
+.nav-item.active {
+    color: #22c55e;
 }
