@@ -1,16 +1,24 @@
+// ቴሌግራምን ማገናኘት
 let tg = window.Telegram.WebApp;
-tg.expand(); // አፑን ሙሉ ገጽ ያደርገዋል
+tg.expand();
 
-// የተጫዋቹን ስም ለመቀየር
-const welcomeTitle = document.querySelector('.welcome-section p');
+// 1. የተጫዋቹን ስም መቀየር
+let welcomeMsg = document.getElementById("welcome-user");
 if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-    welcomeTitle.innerText = `Welcome, ${tg.initDataUnsafe.user.first_name}!`;
+    welcomeMsg.innerText = `Welcome, ${tg.initDataUnsafe.user.first_name}!`;
 }
 
-// ለጊዜው የብር መጠኑን 100 እናድርገው (በኋላ ከዳታቤዝ እናመጣዋለን)
-document.getElementById('user-balance').innerText = "100.00 ETB";
+// 2. የ Rules ሳጥን ስራ
+let modal = document.getElementById("rules-modal");
+let btn = document.getElementById("rules-btn");
+let span = document.getElementsByClassName("close")[0];
 
-// የ Play Button ሲነካ የሚሆን ነገር
-document.querySelector('.play-btn').addEventListener('click', () => {
-    tg.showAlert("ጨዋታው በቅርብ ቀን ይጀምራል!");
-});
+btn.onclick = function() { modal.style.display = "block"; }
+span.onclick = function() { modal.style.display = "none"; }
+
+window.onclick = function(event) {
+    if (event.target == modal) { modal.style.display = "none"; }
+}
+
+// 3. የብር መጠን (መጀመሪያ 0 ይሁን)
+document.getElementById("user-balance").innerText = "0";
