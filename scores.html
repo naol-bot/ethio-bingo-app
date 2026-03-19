@@ -1,93 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard - Ethio Bingo</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-</head>
-<body class="scores-page">
-    <div class="container">
-        <header style="padding: 15px;">
-            <span class="logo">ETHIO BINGO</span>
-        </header>
-
-        <main style="padding: 0 15px;">
-            <div class="my-rank-card">
-                <div class="rank-avatar">-</div>
-                <div class="rank-user-info">
-                    <p>MY RANK</p>
-                    <h3>@TEWDAJ</h3>
-                    <span>UNRANKED</span>
-                </div>
-                <div class="rank-score">
-                    <h3>0</h3>
-                    <p>PLAYED</p>
-                </div>
-            </div>
-
-            <div class="tab-container">
-                <button class="tab-btn active" onclick="switchTab('daily')">DAILY</button>
-                <button class="tab-btn" onclick="switchTab('weekly')">WEEKLY</button>
-            </div>
-
-            <p style="font-size: 10px; color: #848d97; margin-bottom: 15px;">TOP 10 PLAYERS</p>
-
-            <div id="daily-list" class="leaderboard-list">
-                <div class="player-card">
-                    <div class="rank-num r1">1</div>
-                    <div class="p-name">@AYAA</div>
-                    <div class="p-games">45 <span>GAMES</span></div>
-                </div>
-                <div class="player-card">
-                    <div class="rank-num r2">2</div>
-                    <div class="p-name">@ናርዶስ ፋቃዱ</div>
-                    <div class="p-games">45 <span>GAMES</span></div>
-                </div>
-                <div class="player-card">
-                    <div class="rank-num r3">3</div>
-                    <div class="p-name">@FEታ</div>
-                    <div class="p-games">40 <span>GAMES</span></div>
-                </div>
-            </div>
-
-            <div id="weekly-list" class="leaderboard-list" style="display: none;">
-                <div class="player-card">
-                    <div class="rank-num">1</div>
-                    <div class="p-name">@Weekly_King</div>
-                    <div class="p-games">300 <span>GAMES</span></div>
-                </div>
-            </div>
-        </main>
-
-        <nav class="bottom-nav">
-            <a href="index.html" class="nav-item"><span class="icon">🎮</span>GAME</a>
-            <a href="scores.html" class="nav-item active"><span class="icon">🏆</span>SCORES</a>
-            <a href="history.html" class="nav-item"><span class="icon">🕒</span>HISTORY</a>
-            <a href="wallet.html" class="nav-item"><span class="icon">💼</span>WALLET</a>
-            <a href="profile.html" class="nav-item"><span class="icon">👤</span>PROFILE</a>
-        </nav>
+<div class="container">
+    <div style="background: linear-gradient(135deg, #4f46e5, #7c3aed); margin: 15px; padding: 25px; border-radius: 25px; display: flex; align-items: center;">
+        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: bold;">12</div>
+        <div style="margin-left: 15px;">
+            <p style="margin: 0; font-size: 10px; opacity: 0.8;">MY RANK</p>
+            <h2 style="margin: 0; font-size: 18px;">@TEWDAJ</h2>
+        </div>
     </div>
 
-    <script>
-        function switchTab(type) {
-            const dailyList = document.getElementById('daily-list');
-            const weeklyList = document.getElementById('weekly-list');
-            const btns = document.querySelectorAll('.tab-btn');
+    <div style="padding: 0 5px;">
+        <div class="card" style="display: flex; justify-content: space-between;">
+            <span>1. @NAOL</span>
+            <span style="color: #f59e0b; font-weight: bold;">5,400 ETB</span>
+        </div>
+    </div>
 
-            if (type === 'daily') {
-                dailyList.style.display = 'block';
-                weeklyList.style.display = 'none';
-                btns[0].classList.add('active');
-                btns[1].classList.remove('active');
-            } else {
-                dailyList.style.display = 'none';
-                weeklyList.style.display = 'block';
-                btns[0].classList.remove('active');
-                btns[1].classList.add('active');
-            }
-        }
-    </script>
-</body>
-</html>
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item"><span class="icon">🎮</span>GAME</a>
+        <a href="scores.html" class="nav-item active"><span class="icon">🏆</span>SCORES</a>
+        <a href="history.html" class="nav-item"><span class="icon">🕒</span>HISTORY</a>
+        <a href="wallet.html" class="nav-item"><span class="icon">💼</span>WALLET</a>
+        <a href="profile.html" class="nav-item"><span class="icon">👤</span>PROFILE</a>
+    </nav>
+</div>
