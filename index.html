@@ -1,40 +1,62 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <span class="logo-text">ETHIO BINGO</span>
+        <header>
+            <span class="logo">ETHIO BINGO</span>
             <button class="rules-btn">Rules</button>
-        </div>
+        </header>
 
-        <div class="main-card">
-            <p class="welcome-msg">Welcome to</p>
-            <h1 class="main-title">ETHIO BINGO</h1>
-            
-            <p class="stake-text">CHOOSE YOUR STAKE</p>
-            <hr class="divider">
+        <main class="main-content">
+            <div class="welcome-section">
+                <p>Welcome to</p>
+                <h1 class="brand-name">ETHIO BINGO</h1>
+                <p class="stake-text">CHOOSE YOUR STAKE</p>
+            </div>
 
-            <button class="play-btn">▶ PLAY 10</button>
+            <div class="divider"></div>
+
+            <button class="play-btn">
+                <i class="fas fa-play"></i> PLAY 10
+            </button>
 
             <div class="balance-section">
                 <p>WALLET BALANCE</p>
-                <h2 class="balance-amount">4</h2>
+                <h2 id="user-balance">0.00</h2>
             </div>
-        </div>
+        </main>
 
-        <div class="bottom-nav">
-            <div class="nav-item active">🎮<br>GAME</div>
-            <div class="nav-item">🏆<br>SCORES</div>
-            <div class="nav-item">🕒<br>HISTORY</div>
-            <div class="nav-item">💼<br>WALLET</div>
-            <div class="nav-item">👤<br>PROFILE</div>
-        </div>
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-gamepad"></i>
+                <span>GAME</span>
+            </a>
+            <a href="scores.html" class="nav-item">
+                <i class="fas fa-trophy"></i>
+                <span>SCORES</span>
+            </a>
+            <a href="history.html" class="nav-item">
+                <i class="fas fa-history"></i>
+                <span>HISTORY</span>
+            </a>
+            <a href="wallet.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>WALLET</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>PROFILE</span>
+            </a>
+        </nav>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
