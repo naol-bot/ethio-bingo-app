@@ -1,34 +1,38 @@
-/* 1. መሠረታዊ አቀማመጥ */
+/* መሠረታዊ አቀማመጥ */
 html, body {
-    background-color: #000;
-    margin: 0;
-    padding: 0;
+    background-color: #0b0e14;
+    margin: 0; padding: 0;
     min-height: 100vh;
-    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 450px; 
-    margin: 0 auto; 
+    max-width: 450px;
+    margin: 0 auto;
     background: radial-gradient(circle at top, #1e293b 0%, #0d1117 100%);
     min-height: 100vh;
     position: relative;
     padding-bottom: 100px;
-    box-shadow: 0 0 60px rgba(0,0,0,0.7);
-    display: block;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
-/* 2. የታችኛው ሜኑ (Bottom Nav) - ትልቅ Emoji እና Glow */
+
+/* Bottom Nav - ትላልቅ እና እኩል Emoji */
 .bottom-nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #0b1018;
-    padding: 12px 0;
-    border-top: 1px solid #1e293b;
+    background: rgba(11, 16, 24, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
     bottom: 0;
     width: 100%;
-    max-width: 500px; /* ከ container ጋር እኩል እንዲሆን */
+    max-width: 450px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
 }
 
@@ -38,161 +42,28 @@ html, body {
     color: #64748b;
     font-size: 10px;
     flex: 1;
-    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .nav-item .icon {
-    font-size: 26px; /* ትልቅ መጠን */
-    display: block;
+    font-size: 26px; /* ሁሉም እኩል ትልቅ መጠን */
     margin-bottom: 5px;
-    transition: transform 0.3s ease;
-}
-
-/* ሲነካ የሚበራው (Glow) */
-.nav-item.active {
-    color: #10b981;
-}
-
-.nav-item.active .icon {
-    transform: translateY(-5px);
-    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.8));
-}
-
-.nav-item.active::after {
-    content: '';
-    width: 20px;
-    height: 2px;
-    background: #10b981;
-    margin-top: 4px;
-    box-shadow: 0 0 10px #10b981;
-}
-
-/* 3. Scores ገጽ - My Rank Card */
-.my-rank-card {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    border-radius: 20px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 15px;
-}
-
-.rank-avatar {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.rank-info { flex: 1; }
-.rank-info p { margin: 0; font-size: 9px; opacity: 0.8; }
-.rank-info h3 { margin: 2px 0; font-size: 16px; text-transform: uppercase; }
-
-/* 4. Tabs (Daily/Weekly) */
-.tab-container {
-    background: #161b22;
-    padding: 5px;
-    border-radius: 12px;
-    display: flex;
-    margin: 0 15px 20px;
-}
-
-.tab-btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    background: transparent;
-    color: #64748b;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
     transition: 0.3s;
 }
 
-.tab-btn.active {
-    background: #30363d;
-    color: white;
+.nav-item.active { color: #10b981; }
+.nav-item.active .icon {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 8px #10b981);
 }
 
-/* 5. ካርዶች (Leaderboard, Wallet, History) */
-.player-card, .activity-card {
-    background: #161b22;
-    padding: 15px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    margin: 0 15px 10px;
-    border: 1px solid #1e293b;
-}
-
-.rank-num {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    font-weight: bold;
-    background: #1e293b;
-}
-
-.rank-num.r1 { background: #f59e0b; color: #000; }
-.rank-num.r2 { background: #94a3b8; color: #000; }
-.rank-num.r3 { background: #b45309; color: #fff; }
-
-/* 6. Profile - Sound Switch */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 46px;
-    height: 24px;
-}
-
-.switch input { opacity: 0; width: 0; height: 0; }
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #30363d;
-    transition: .4s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px; width: 18px;
-    left: 3px; bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider { background-color: #10b981; }
-input:checked + .slider:before { transform: translateX(22px); }
-
-/* 7. Wallet Grid */
-.wallet-grid {
-    display: flex;
-    gap: 12px;
-    padding: 0 15px;
-}
-
-.wallet-card {
-    flex: 1;
-    background: #161b22;
-    padding: 18px;
+/* ካርዶች */
+.card {
+    background: rgba(22, 27, 34, 0.8);
     border-radius: 20px;
-    border: 1px solid #1e293b;
+    padding: 15px;
+    margin: 10px 15px;
+    border: 1px solid #30363d;
 }
