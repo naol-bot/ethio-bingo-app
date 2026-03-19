@@ -107,3 +107,40 @@ document.addEventListener('DOMContentLoaded', () => {
         playBtn.addEventListener('click', () => alert("ጨዋታው በቅርቡ ይጀምራል... 🎮"));
     }
 });
+// ==========================================
+    // 4. WALLET PAGE LOGIC (ለ wallet.html)
+    // ==========================================
+    const walletActivity = document.getElementById('walletActivity');
+    if (walletActivity) {
+        // የግብይት ታሪክ ዳታ (ከፎቶህ ላይ የተወሰደ)
+        const transactions = [
+            { type: "WITHDRAW", status: "COMPLETED", via: "ADMIN_SUB", amount: -140, date: "15/2/2026", color: "orange" },
+            { type: "DEPOSIT", status: "APPROVED", ref: "DCH9VLCVT5", amount: 14, date: "17/3/2026", color: "emerald" },
+            { type: "DEPOSIT", status: "APPROVED", ref: "DC79I4QLJ1", amount: 100, date: "7/3/2026", color: "emerald" },
+            { type: "DEPOSIT", status: "APPROVED", ref: "DC53GSLLXJ", amount: 40, date: "5/3/2026", color: "emerald" }
+        ];
+
+        let walletHtml = "";
+        transactions.forEach(tx => {
+            const isWithdraw = tx.amount < 0;
+            const icon = isWithdraw ? "↑" : "↓";
+            const colorClass = isWithdraw ? "orange-500" : "emerald-500";
+            const sign = isWithdraw ? "" : "+";
+
+            walletHtml += `
+                <div class="bg-white/5 p-4 rounded-[1.2rem] flex justify-between items-center border border-white/5">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-${colorClass}/10 rounded-xl flex items-center justify-center text-${colorClass} text-lg font-bold">${icon}</div>
+                        <div>
+                            <h4 class="font-black text-white text-[11px] tracking-wide uppercase">${tx.type} ${tx.status}</h4>
+                            <p class="text-[9px] text-gray-500 font-bold uppercase">${isWithdraw ? 'VIA: ' + tx.via : 'REF: ' + tx.ref}</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-black text-sm ${isWithdraw ? 'text-orange-400' : 'text-emerald-400'}">${sign}${tx.amount} <span class="text-[9px]">ETB</span></p>
+                        <p class="text-[9px] text-gray-600 font-bold mt-0.5">${tx.date}</p>
+                    </div>
+                </div>`;
+        });
+        walletActivity.innerHTML = walletHtml;
+    }
