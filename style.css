@@ -1,31 +1,38 @@
-/* 1. መሠረታዊ የገጽ አቀማመጥ */
-body {
-    background-color: #0d1117;
-    color: white;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+/* 1. መሠረታዊ አቀማመጥ */
+html, body {
+    background-color: #000; /* ከገጹ ውጪ ያለው ጥቁር እንዲሆን */
     margin: 0;
     padding: 0;
-    padding-bottom: 90px; /* ለታችኛው ሜኑ ቦታ */
-    overflow-x: hidden;
+    min-height: 100vh;
+    display: block; /* ለስልክ እንዲስተካከል */
 }
 
 .container {
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 450px; /* ልክ እንደ ስልክ ጠባብ እንዲሆን */
+    margin: 0 auto; /* በ PC መሃል ላይ ያመጣዋል */
+    background-color: #0d1117;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
 }
 
-header {
-    padding: 20px 15px;
-    text-align: left;
+/* የታችኛው ሜኑ (Bottom Nav) ማስተካከያ */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #0b1018;
+    padding: 12px 0;
+    border-top: 1px solid #1e293b;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 450px; /* ከ container ጋር እኩል ይሁን */
+    left: 50%; /* መሃል ላይ ለመጀመር */
+    transform: translateX(-50%); /* በትክክል መሃል ለማድረግ */
+    z-index: 1000;
 }
-
-.logo {
-    font-weight: bold;
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: white;
-}
-
 /* 2. የታችኛው ሜኑ (Bottom Nav) - ትልቅ Emoji እና Glow */
 .bottom-nav {
     display: flex;
