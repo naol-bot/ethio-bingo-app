@@ -8,16 +8,12 @@
 </head>
 <body class="scores-page">
     <div class="container">
-        <header style="padding: 15px;">
-            <span class="logo">DIL BINGO</span>
-        </header>
-
         <div class="my-rank-header">
             <div class="user-box">
                 <div class="user-avatar">-</div>
                 <div class="user-info">
                     <p>MY RANK</p>
-                    <h3 id="player-user">@WASE</h3>
+                    <h3 id="player-user">@USER</h3>
                     <p>UNRANKED</p>
                 </div>
             </div>
@@ -28,35 +24,35 @@
         </div>
 
         <div class="tab-container">
-            <button class="tab-btn active">DAILY</button>
-            <button class="tab-btn">WEEKLY</button>
+            <button class="tab-btn active" onclick="showTab('daily', this)">DAILY</button>
+            <button class="tab-btn" onclick="showTab('weekly', this)">WEEKLY</button>
         </div>
 
         <p style="padding-left: 20px; color: #848d97; font-size: 0.8rem; margin-bottom: 15px;">TOP 10 PLAYERS</p>
 
-        <div class="leaderboard-list">
+        <div id="daily" class="leaderboard-list">
             <div class="player-card">
                 <div class="rank-badge gold">1</div>
                 <span class="player-name">@AYAA</span>
                 <div class="player-score"><b>45</b><small>GAMES</small></div>
             </div>
-
             <div class="player-card">
                 <div class="rank-badge silver">2</div>
                 <span class="player-name">@ናርዶስ_ፈቃዱ</span>
                 <div class="player-score"><b>27</b><small>GAMES</small></div>
             </div>
+        </div>
 
+        <div id="weekly" class="leaderboard-list" style="display: none;">
             <div class="player-card">
-                <div class="rank-badge bronze">3</div>
-                <span class="player-name">@CHALA</span>
-                <div class="player-score"><b>21</b><small>GAMES</small></div>
+                <div class="rank-badge gold">1</div>
+                <span class="player-name">@WONDIMU</span>
+                <div class="player-score"><b>120</b><small>GAMES</small></div>
             </div>
-
             <div class="player-card">
-                <div class="rank-badge other">4</div>
-                <span class="player-name">@TESFA</span>
-                <div class="player-score"><b>20</b><small>GAMES</small></div>
+                <div class="rank-badge silver">2</div>
+                <span class="player-name">@ETHIO_KING</span>
+                <div class="player-score"><b>98</b><small>GAMES</small></div>
             </div>
         </div>
 
@@ -71,6 +67,22 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        function showTab(tabName, btn) {
+            // ሁሉንም ሊስቶች ደብቅ
+            document.getElementById('daily').style.display = 'none';
+            document.getElementById('weekly').style.display = 'none';
+            
+            // የተመረጠውን ሊስት አሳይ
+            document.getElementById(tabName).style.display = 'block';
+            
+            // ሁሉንም በተኖች ደብዝዝ አድርግ
+            let buttons = document.getElementsByClassName('tab-btn');
+            for (let b of buttons) { b.classList.remove('active'); }
+            
+            // የተነካውን በተን አድምቅ
+            btn.classList.add('active');
+        }
+
         let tg = window.Telegram.WebApp;
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             document.getElementById('player-user').innerText = "@" + (tg.initDataUnsafe.user.username || tg.initDataUnsafe.user.first_name).toUpperCase();
