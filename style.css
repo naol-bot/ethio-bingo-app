@@ -97,3 +97,59 @@ header { display: flex; justify-content: space-between; align-items: center; mar
 .player-name { flex: 1; color: white; font-weight: 500; }
 .player-score { text-align: right; color: white; }
 .player-score small { display: block; font-size: 0.7rem; color: #848d97; }
+/* Wallet Cards */
+.wallet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.wallet-box {
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.main-w { background: rgba(0, 150, 136, 0.1); border-color: #009688; }
+.play-w { background: rgba(103, 58, 183, 0.1); border-color: #673ab7; }
+
+.wallet-box h4 { font-size: 10px; color: #848d97; margin-bottom: 8px; text-transform: uppercase; }
+.wallet-box p { font-size: 18px; font-weight: bold; }
+
+.total-available {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #161b22;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+/* Activity List */
+.activity-item {
+    background: #161b22;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon-box {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; justify-content: center; align-items: center;
+    margin-right: 15px;
+}
+
+.up { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.down { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+.act-info { flex: 1; }
+.act-info h5 { font-size: 13px; margin-bottom: 2px; }
+.act-info span { font-size: 10px; color: #848d97; }
+
+.act-amount { text-align: right; font-weight: bold; }
+.pos { color: #10b981; }
+.neg { color: #f59e0b; }
