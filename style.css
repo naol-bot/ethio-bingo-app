@@ -88,3 +88,13 @@
 .rank-silver { background-color: #cbd5e1; color: #0f0c29; }
 .rank-bronze { background-color: #f97316; color: #0f0c29; }
 .rank-default { background-color: #1e1e3f; color: #6b7280; }
+/* ለ Scores ገጽ መቀያየሪያ (Toggle) */
+.toggle-container {
+    background-color: #161633;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-active {
+    background-color: #2a2a5a !important;
+    color: white !important;
+}
