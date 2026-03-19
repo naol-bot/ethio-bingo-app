@@ -7,22 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#0f0c29] text-white min-h-screen flex flex-col font-sans overflow-hidden">
+<body class="bg-[#0f0c29] text-white min-h-screen flex flex-col font-sans overflow-hidden m-0 p-0">
 
     <div class="flex justify-between items-center p-5 w-full">
-        <h1 class="text-[10px] font-bold tracking-[0.2em] opacity-60">ETHIO BINGO</h1>
+        <h1 class="text-[10px] font-bold tracking-[0.2em] opacity-60 uppercase">Ethio Bingo</h1>
         <button onclick="toggleRules()" class="bg-gray-800/40 border border-gray-700 px-4 py-1 rounded-full text-[10px]">Rules</button>
     </div>
 
-    <div class="flex-grow flex flex-col items-center justify-center -mt-12">
-        <p class="text-gray-400 text-base mb-1">Welcome to</p>
-        <h2 class="ethio-title">ETHIO BINGO</h2>
+    <div class="flex-grow flex flex-col items-center justify-center -mt-10">
+        <p class="text-gray-400 text-sm mb-1">Welcome to</p>
+        <h2 class="ethio-title text-center">ETHIO BINGO</h2>
 
-        <div class="play-card">
+        <div class="play-card flex flex-col items-center">
             <p class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-4 font-bold">Choose your stake</p>
             <div class="w-10 h-[2px] bg-yellow-500 rounded-full mb-8 shadow-[0_0_10px_#eab308]"></div>
 
-            <button id="playBtn" class="play-button">
+            <button id="playBtn" class="play-button w-full">
                 ▶ PLAY 10
             </button>
 
@@ -33,25 +33,25 @@
         </div>
     </div>
 
-    <div class="nav-bar">
-        <a href="index.html" class="nav-item active">
+    <div class="nav-bar fixed bottom-0 w-full flex justify-around py-4 pb-8 bg-[#0a0a1f] border-t border-gray-900">
+        <a href="index.html" class="nav-item active flex flex-col items-center">
             <span class="text-xl">🎮</span>
             <span class="text-[9px] font-bold mt-1">GAME</span>
             <div class="active-dot"></div>
         </a>
-        <a href="scores.html" class="nav-item">
+        <a href="scores.html" class="nav-item flex flex-col items-center">
             <span class="text-xl">🏆</span>
             <span class="text-[9px] font-bold mt-1">SCORES</span>
         </a>
-        <a href="history.html" class="nav-item">
+        <a href="history.html" class="nav-item flex flex-col items-center">
             <span class="text-xl">🕒</span>
             <span class="text-[9px] font-bold mt-1">HISTORY</span>
         </a>
-        <a href="wallet.html" class="nav-item">
+        <a href="wallet.html" class="nav-item flex flex-col items-center">
             <span class="text-xl">💼</span>
             <span class="text-[9px] font-bold mt-1">WALLET</span>
         </a>
-        <a href="profile.html" class="nav-item">
+        <a href="profile.html" class="nav-item flex flex-col items-center">
             <span class="text-xl">👤</span>
             <span class="text-[9px] font-bold mt-1">PROFILE</span>
         </a>
@@ -60,9 +60,7 @@
     <div id="rulesModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center p-6 z-50 backdrop-blur-sm">
         <div class="bg-[#1a1a3a] border border-gray-700 w-full max-w-xs rounded-[2.5rem] p-8 shadow-2xl text-center">
             <h3 class="text-xl font-bold text-yellow-500 mb-4 italic">የጨዋታው ህግጋት 📜</h3>
-            <p class="text-sm text-gray-300 leading-relaxed mb-6">
-                ለመጀመር የ 10 ብር Stake ይምረጡ። ቁጥሮች በዘፈቀደ ይወጣሉ። ቀድሞ የሞላ 'Bingo' ይላል። ያሸነፉት ገንዘብ ወደ Wallet ይገባል።
-            </p>
+            <p class="text-sm text-gray-300 leading-relaxed mb-6">ለመጀመር የ 10 ብር Stake ይምረጡ። ቁጥሮች በዘፈቀደ ይወጣሉ። ያሸነፉት ገንዘብ ወደ Wallet ይገባል።</p>
             <button onclick="toggleRules()" class="w-full bg-gray-700 py-3 rounded-xl font-bold text-sm">ተረዳሁ</button>
         </div>
     </div>
