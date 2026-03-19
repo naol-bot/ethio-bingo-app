@@ -5,58 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <span class="logo">ETHIO BINGO</span>
-            <button class="rules-btn">Rules</button>
+            <button class="rules-btn" id="rules-btn">Rules</button>
         </header>
 
         <main class="main-content">
             <div class="welcome-section">
-                <p>Welcome to</p>
+                <p id="welcome-user">Welcome to</p>
                 <h1 class="brand-name">ETHIO BINGO</h1>
-                <p class="stake-text">CHOOSE YOUR STAKE</p>
+                <div class="stake-box">
+                    <p class="stake-text">CHOOSE YOUR STAKE</p>
+                    <div class="yellow-line"></div>
+                </div>
             </div>
 
-            <div class="divider"></div>
-
             <button class="play-btn">
-                <i class="fas fa-play"></i> PLAY 10
+                <span>▶ PLAY 10</span>
             </button>
 
             <div class="balance-section">
                 <p>WALLET BALANCE</p>
-                <h2 id="user-balance">0.00</h2>
+                <h2 id="user-balance">0</h2>
             </div>
         </main>
 
+        <div id="rules-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>የጨዋታው ህጎች</h2>
+                <p>1. ማስጠቢያ 10 ብር ነው።</p>
+                <p>2. ቀድሞ የሞላ ተጫዋች ያሸንፋል።</p>
+                <p>3. መልካም ዕድል!</p>
+            </div>
+        </div>
+
         <nav class="bottom-nav">
-            <a href="index.html" class="nav-item active">
-                <i class="fas fa-gamepad"></i>
-                <span>GAME</span>
-            </a>
-            <a href="scores.html" class="nav-item">
-                <i class="fas fa-trophy"></i>
-                <span>SCORES</span>
-            </a>
-            <a href="history.html" class="nav-item">
-                <i class="fas fa-history"></i>
-                <span>HISTORY</span>
-            </a>
-            <a href="wallet.html" class="nav-item">
-                <i class="fas fa-wallet"></i>
-                <span>WALLET</span>
-            </a>
-            <a href="profile.html" class="nav-item">
-                <i class="fas fa-user"></i>
-                <span>PROFILE</span>
-            </a>
+            <div class="nav-item active" onclick="window.location.href='index.html'">🎮<br>GAME</div>
+            <div class="nav-item" onclick="window.location.href='scores.html'">🏆<br>SCORES</div>
+            <div class="nav-item" onclick="window.location.href='history.html'">🕒<br>HISTORY</div>
+            <div class="nav-item" onclick="window.location.href='wallet.html'">💼<br>WALLET</div>
+            <div class="nav-item" onclick="window.location.href='profile.html'">👤<br>PROFILE</div>
         </nav>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
