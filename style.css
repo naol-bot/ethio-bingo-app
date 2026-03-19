@@ -1,22 +1,16 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* ርዕስ (Title) */
+/* ርዕስ */
 .ethio-title {
-    font-size: 2.8rem !important;
+    font-size: 2.5rem !important;
     font-weight: 900;
     color: #eab308;
     font-style: italic;
-    text-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
+    text-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
     margin-bottom: 20px !important;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
 }
 
-/* ካርዱ (Card) */
+/* ካርዱ (በመሃል እንዲሆን) */
 .play-card {
     width: 85%;
     max-width: 340px;
@@ -25,14 +19,12 @@
     border-radius: 35px;
     padding: 30px 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* PLAY Button */
 .play-button {
-    width: 100%;
     background-color: #00c896;
     color: #0f0c29;
     font-size: 1.4rem;
@@ -51,21 +43,11 @@
 
 /* Nav Bar */
 .nav-bar {
-    background-color: #0a0a1f;
-    border-top: 1px solid #1a1a2e;
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0 30px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    z-index: 100;
 }
 
 .nav-item {
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     color: #4b5563;
 }
 
