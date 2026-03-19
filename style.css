@@ -1,69 +1,66 @@
-/* መሠረታዊ አቀማመጥ */
-html, body {
-    background-color: #0b0e14;
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body, html {
+    background-color: #05070a;
     margin: 0; padding: 0;
-    min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: white;
+    display: flex; justify-content: center;
     overflow-x: hidden;
 }
 
 .container {
-    max-width: 450px;
-    margin: 0 auto;
-    background: radial-gradient(circle at top, #1e293b 0%, #0d1117 100%);
+    width: 100%;
+    max-width: 420px; /* በ PC ላይ ጠባብ እንዲሆን */
+    background: radial-gradient(circle at top, #1a1c2c 0%, #05070a 100%);
     min-height: 100vh;
     position: relative;
     padding-bottom: 100px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
 }
 
 /* Bottom Nav - ትላልቅ እና እኩል Emoji */
 .bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: rgba(11, 16, 24, 0.98);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
-    bottom: 0;
-    width: 100%;
-    max-width: 450px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0; width: 100%; max-width: 420px;
+    background: rgba(13, 17, 23, 0.96);
+    backdrop-filter: blur(15px);
+    display: flex; justify-content: space-around;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
     z-index: 1000;
 }
 
 .nav-item {
-    text-align: center;
-    text-decoration: none;
-    color: #64748b;
-    font-size: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center; text-decoration: none;
+    color: #64748b; font-size: 10px; flex: 1;
 }
 
 .nav-item .icon {
-    font-size: 26px; /* ሁሉም እኩል ትልቅ መጠን */
-    margin-bottom: 5px;
-    transition: 0.3s;
+    display: block; font-size: 26px; /* ትልቅ መጠን */
+    margin-bottom: 5px; transition: 0.3s ease;
 }
 
 .nav-item.active { color: #10b981; }
-.nav-item.active .icon {
+.nav-item.active .icon { 
+    filter: drop-shadow(0 0 10px #10b981); 
     transform: translateY(-5px);
-    filter: drop-shadow(0 0 8px #10b981);
 }
 
-/* ካርዶች */
+/* Cards & Buttons */
 .card {
-    background: rgba(22, 27, 34, 0.8);
-    border-radius: 20px;
-    padding: 15px;
-    margin: 10px 15px;
-    border: 1px solid #30363d;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 25px; padding: 20px; margin: 15px 20px;
 }
+
+.play-btn {
+    background: #10b981; color: #000;
+    border: none; padding: 18px 50px;
+    border-radius: 50px; font-weight: bold;
+    font-size: 20px; cursor: pointer;
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+    transition: 0.3s;
+}
+
+.play-btn:active { transform: scale(0.95); }
