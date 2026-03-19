@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -10,49 +10,43 @@
 <body>
     <div class="container">
         <header>
-            <span class="logo">ETHIO BINGO</span>
+            <span class="logo">DIL BINGO</span>
             <button class="rules-btn" id="rules-btn">Rules</button>
         </header>
 
-        <main class="main-content">
-            <div class="welcome-section">
-                <p id="welcome-user">Welcome to</p>
-                <h1 class="brand-name">ETHIO BINGO</h1>
-                <div class="stake-box">
-                    <p class="stake-text">CHOOSE YOUR STAKE</p>
-                    <div class="yellow-line"></div>
-                </div>
-            </div>
+        <main class="main-card">
+            <p id="welcome-user">Welcome</p>
+            <h1 class="brand-name">DIL BINGO</h1>
+            <p style="font-size: 0.8rem; color: #848d97; letter-spacing: 1px;">CHOOSE YOUR STAKE</p>
+            
+            <button class="play-btn">▶ PLAY 10</button>
 
-            <button class="play-btn">
-                <span>▶ PLAY 10</span>
-            </button>
-
-            <div class="balance-section">
-                <p>WALLET BALANCE</p>
-                <h2 id="user-balance">0</h2>
+            <div style="margin-top: 20px;">
+                <p style="font-size: 0.8rem; color: #848d97;">WALLET BALANCE</p>
+                <h2 id="user-balance" style="font-size: 2.5rem; margin-top: 5px;">0</h2>
             </div>
         </main>
 
         <div id="rules-modal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>የጨዋታው ህጎች</h2>
-                <p>1. ማስጠቢያ 10 ብር ነው።</p>
-                <p>2. ቀድሞ የሞላ ተጫዋች ያሸንፋል።</p>
-                <p>3. መልካም ዕድል!</p>
+                <span id="close-modal" style="position: absolute; right: 20px; top: 10px; font-size: 24px; cursor: pointer;">&times;</span>
+                <h2 style="color: #f59e0b; margin-bottom: 15px;">የጨዋታው ህጎች</h2>
+                <div style="text-align: left; line-height: 1.8;">
+                    <p>1. ማስጠቢያ 10 ብር ነው።</p>
+                    <p>2. ቀድሞ የሞላ ተጫዋች ያሸንፋል።</p>
+                    <p>3. መልካም ዕድል!</p>
+                </div>
             </div>
         </div>
 
         <nav class="bottom-nav">
-            <div class="nav-item active" onclick="window.location.href='index.html'">🎮<br>GAME</div>
-            <div class="nav-item" onclick="window.location.href='scores.html'">🏆<br>SCORES</div>
-            <div class="nav-item" onclick="window.location.href='history.html'">🕒<br>HISTORY</div>
-            <div class="nav-item" onclick="window.location.href='wallet.html'">💼<br>WALLET</div>
-            <div class="nav-item" onclick="window.location.href='profile.html'">👤<br>PROFILE</div>
+            <a href="index.html" class="nav-item active">🎮<br>GAME</a>
+            <a href="scores.html" class="nav-item">🏆<br>SCORES</a>
+            <a href="history.html" class="nav-item">🕒<br>HISTORY</a>
+            <a href="wallet.html" class="nav-item">💼<br>WALLET</a>
+            <a href="profile.html" class="nav-item">👤<br>PROFILE</a>
         </nav>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
