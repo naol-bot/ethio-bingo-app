@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard - Ethio Bingo</title>
+    <title>Leaderboard - Dil Bingo</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
@@ -13,7 +13,7 @@
             <div class="rank-avatar">-</div>
             <div class="rank-info">
                 <p class="rank-label">MY RANK</p>
-                <h3 id="player-username">@USER</h3>
+                <h3 id="player-username">@Ethiobingo02</h3>
                 <p class="unranked">UNRANKED</p>
             </div>
             <div class="played-stat">
@@ -45,19 +45,20 @@
                 <span class="user-handle">@CHALA</span>
                 <span class="game-count">21 GAMES</span>
             </div>
-            </main>
+        </main>
 
         <nav class="bottom-nav">
-            <div class="nav-item" onclick="window.location.href='index.html'">🎮<br>GAME</div>
-            <div class="nav-item active" onclick="window.location.href='scores.html'">🏆<br>SCORES</div>
-            <div class="nav-item" onclick="window.location.href='history.html'">🕒<br>HISTORY</div>
-            <div class="nav-item" onclick="window.location.href='wallet.html'">💼<br>WALLET</div>
-            <div class="nav-item" onclick="window.location.href='profile.html'">👤<br>PROFILE</div>
+            <a href="index.html" class="nav-item">🎮<br>GAME</a>
+            <a href="scores.html" class="nav-item active">🏆<br>SCORES</a>
+            <a href="history.html" class="nav-item">🕒<br>HISTORY</a>
+            <a href="wallet.html" class="nav-item">💼<br>WALLET</a>
+            <a href="profile.html" class="nav-item">👤<br>PROFILE</a>
         </nav>
     </div>
 
     <script>
         let tg = window.Telegram.WebApp;
+        tg.expand();
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             document.getElementById('player-username').innerText = "@" + (tg.initDataUnsafe.user.username || tg.initDataUnsafe.user.first_name);
         }
