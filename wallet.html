@@ -5,47 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wallet - Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="scores-page">
     <div class="container">
-        <header>
-            <span class="logo">MY WALLET</span>
+        <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
+            <span class="logo">ETHIO BINGO</span>
+            <span style="background: rgba(99, 102, 241, 0.2); color: #818cf8; padding: 5px 12px; border-radius: 20px; font-size: 10px; font-weight: bold;">VERIFIED</span>
         </header>
 
-        <main class="main-content">
-            <div class="balance-card">
-                <p>Current Balance</p>
-                <h1>100.00 ETB</h1>
+        <div style="padding: 0 15px;">
+            <h2 style="margin-bottom: 5px;">MY WALLET</h2>
+            <p style="font-size: 10px; color: #848d97; margin-bottom: 20px;">251979596741</p>
+
+            <div class="wallet-grid">
+                <div class="wallet-box main-w">
+                    <h4>🏆 Main Wallet</h4>
+                    <p>2 <span style="font-size: 12px;">ETB</span></p>
+                </div>
+                <div class="wallet-box play-w">
+                    <h4>🎮 Play Wallet</h4>
+                    <p>2 <span style="font-size: 12px;">ETB</span></p>
+                </div>
             </div>
 
-            <div class="wallet-actions">
-                <button class="action-btn deposit">Deposit (ብር አስገባ)</button>
-                <button class="action-btn withdraw">Withdraw (ብር አውጣ)</button>
+            <div class="total-available">
+                <span style="color: #848d97;">TOTAL AVAILABLE</span>
+                <span style="font-weight: bold;">4 ETB</span>
             </div>
-        </main>
+
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                <span style="font-size: 12px; color: #848d97;">RECENT ACTIVITY</span>
+                <span style="font-size: 12px; color: #818cf8;">4 TOTAL</span>
+            </div>
+
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="icon-box up">↑</div>
+                    <div class="act-info">
+                        <h5>WITHDRAW COMPLETED</h5>
+                        <span>VIA: TELE</span>
+                    </div>
+                    <div class="act-amount neg">-500 ETB<br><span style="font-size: 9px; font-weight: normal; color: #848d97;">15/3/2026</span></div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="icon-box down">↓</div>
+                    <div class="act-info">
+                        <h5>DEPOSIT APPROVED</h5>
+                        <span>REF: DCG3U7109H</span>
+                    </div>
+                    <div class="act-amount pos">+54 ETB<br><span style="font-size: 9px; font-weight: normal; color: #848d97;">16/3/2026</span></div>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 10px; color: #30363d; margin-top: 30px;">MANAGE YOUR FUNDS IN THE TELEGRAM BOT CHAT</p>
 
         <nav class="bottom-nav">
-            <a href="index.html" class="nav-item">
-                <i class="fas fa-gamepad"></i>
-                <span>GAME</span>
-            </a>
-            <a href="scores.html" class="nav-item">
-                <i class="fas fa-trophy"></i>
-                <span>SCORES</span>
-            </a>
-            <a href="history.html" class="nav-item">
-                <i class="fas fa-history"></i>
-                <span>HISTORY</span>
-            </a>
-            <a href="wallet.html" class="nav-item active">
-                <i class="fas fa-wallet"></i>
-                <span>WALLET</span>
-            </a>
-            <a href="profile.html" class="nav-item">
-                <i class="fas fa-user"></i>
-                <span>PROFILE</span>
-            </a>
+            <a href="index.html" class="nav-item">🎮<br>GAME</a>
+            <a href="scores.html" class="nav-item">🏆<br>SCORES</a>
+            <a href="history.html" class="nav-item">🕒<br>HISTORY</a>
+            <a href="wallet.html" class="nav-item active">💼<br>WALLET</a>
+            <a href="profile.html" class="nav-item">👤<br>PROFILE</a>
         </nav>
     </div>
 </body>
