@@ -24,3 +24,25 @@ navItems.forEach(item => {
         this.classList.add('active');
     });
 });
+// --- Scores Page Logic ---
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButtons = document.querySelectorAll('.toggle-container button');
+    
+    if (toggleButtons.length > 0) {
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // ሁሉንም አጥፋ
+                toggleButtons.forEach(btn => {
+                    btn.classList.remove('toggle-active');
+                    btn.classList.add('text-gray-500');
+                });
+                // የተነካውን አብራ
+                this.classList.add('toggle-active');
+                this.classList.remove('text-gray-500');
+                
+                // እዚህ ጋር ዳታውን መቀየር ትችላለህ (ለወደፊቱ)
+                console.log(this.innerText + " list selected");
+            });
+        });
+    }
+});
