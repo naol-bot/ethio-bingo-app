@@ -144,3 +144,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         walletActivity.innerHTML = walletHtml;
     }
+// ==========================================
+    // 5. PROFILE PAGE LOGIC (Sound Toggle)
+    // ==========================================
+    const soundToggle = document.getElementById('soundToggle');
+    const soundIconBg = document.getElementById('soundIconBg');
+    const soundIconText = document.getElementById('soundIconText');
+
+    if (soundToggle && soundIconBg && soundIconText) {
+        soundToggle.addEventListener('change', function() {
+            if (this.checked) {
+                // On ሁኔታ
+                soundIconBg.classList.remove('bg-red-500/10', 'text-red-500');
+                soundIconBg.classList.add('bg-emerald-500/10', 'text-emerald-500');
+                soundIconText.innerText = "🔊";
+                console.log("Sound On");
+            } else {
+                // Off ሁኔታ
+                soundIconBg.classList.remove('bg-emerald-500/10', 'text-emerald-500');
+                soundIconBg.classList.add('bg-red-500/10', 'text-red-500');
+                soundIconText.innerText = "🔇";
+                console.log("Sound Off");
+            }
+        });
+    }
