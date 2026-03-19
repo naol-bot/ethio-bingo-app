@@ -1,71 +1,75 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History - Ethio Bingo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ethio Bingo - History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h2 style="margin-bottom: 20px;">GAME HISTORY</h2>
+<body class="bg-[#0f0c29] text-white min-h-screen flex flex-col font-sans overflow-x-hidden m-0 p-0">
 
-        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
-            <div style="flex: 1; background: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 10px; color: #8b949e;">TOTAL PLAYED</p>
-                <h2 style="margin: 5px 0;">30 <span style="font-size: 12px; color: #8b949e; font-weight: normal;">Games</span></h2>
+    <div class="p-6 w-full">
+        <h1 class="text-2xl font-black tracking-tight uppercase">Game History</h1>
+        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">Your Recent Sessions</p>
+    </div>
+
+    <div class="flex-grow px-4 pb-32">
+        
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-white/5 border border-white/10 rounded-[1.5rem] p-5">
+                <p class="text-[10px] text-gray-500 font-black uppercase mb-1">Total Played</p>
+                <div class="flex items-baseline gap-1">
+                    <span class="text-2xl font-black">30</span>
+                    <span class="text-[10px] text-gray-500 font-bold italic">Games</span>
+                </div>
             </div>
-            <div style="flex: 1; background: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 10px; color: #3b82f6;">TOTAL WINS</p>
-                <h2 style="margin: 5px 0;">30 <span style="font-size: 12px; color: #3b82f6; font-weight: normal;">Bingos</span></h2>
+            <div class="user-rank-gradient rounded-[1.5rem] p-5">
+                <p class="text-[10px] opacity-70 font-black uppercase mb-1">Total Wins</p>
+                <div class="flex items-baseline gap-1">
+                    <span class="text-2xl font-black">30</span>
+                    <span class="text-[10px] opacity-70 font-bold italic">Bingos</span>
+                </div>
             </div>
         </div>
 
-        <p style="color: #3b82f6; font-size: 12px; font-weight: bold; margin-bottom: 10px;">RECENT ACTIVITY</p>
-
-        <div class="history-list" style="overflow-y: auto; flex-grow: 1;">
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; background: #161b22; padding: 15px; border-radius: 15px; margin-bottom: 10px; border: 1px solid #30363d;">
-                <div style="display: flex; align-items: center;">
-                    <div style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-radius: 10px; margin-right: 12px; font-size: 20px;">💰</div>
-                    <div>
-                        <span style="font-weight: bold; color: white; font-size: 14px;">WALLET DEPOSIT</span>
-                        <br>
-                        <small style="color: #8b949e; font-size: 10px;">via Telebirr • 3/19/2026</small>
-                    </div>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #10b981; font-weight: bold;">+50 ETB</span>
-                    <br>
-                    <small style="color: #8b949e; font-size: 10px;">09:24 AM</small>
-                </div>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; background: #161b22; padding: 15px; border-radius: 15px; margin-bottom: 10px; border: 1px solid #30363d;">
-                <div style="display: flex; align-items: center;">
-                    <div style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-radius: 10px; margin-right: 12px; font-size: 20px;">💰</div>
-                    <div>
-                        <span style="font-weight: bold; color: white; font-size: 14px;">WALLET DEPOSIT</span>
-                        <br>
-                        <small style="color: #8b949e; font-size: 10px;">via Chapa • 3/18/2026</small>
-                    </div>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #10b981; font-weight: bold;">+100 ETB</span>
-                    <br>
-                    <small style="color: #8b949e; font-size: 10px;">02:15 PM</small>
-                </div>
-            </div>
-
+        <div class="flex items-center gap-3 mb-6 px-1">
+            <h2 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Recent Activity</h2>
+            <div class="h-[1px] flex-grow bg-gray-800"></div>
         </div>
 
-        <div class="bottom-nav">
-            <div class="nav-item" onclick="window.location.href='index.html'">🎮<br>GAME</div>
-            <div class="nav-item" onclick="window.location.href='scores.html'">🏆<br>SCORES</div>
-            <div class="nav-item active" onclick="window.location.href='history.html'">🕒<br>HISTORY</div>
-            <div class="nav-item" onclick="window.location.href='wallet.html'">💼<br>WALLET</div>
-            <div class="nav-item" onclick="window.location.href='profile.html'">👤<br>PROFILE</div>
+        <div id="historyList" class="space-y-4">
+            <div class="flex flex-col items-center justify-center py-10 opacity-30">
+                <span class="text-4xl mb-2">🕒</span>
+                <p class="text-xs font-bold">Loading your history...</p>
+            </div>
         </div>
     </div>
+
+    <div class="nav-bar fixed bottom-0 w-full flex justify-around py-4 pb-8 bg-[#0a0a1f] border-t border-gray-900 z-50">
+        <a href="index.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">🎮</span>
+            <span class="text-[9px] font-bold mt-1">GAME</span>
+        </a>
+        <a href="scores.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">🏆</span>
+            <span class="text-[9px] font-bold mt-1">SCORES</span>
+        </a>
+        <a href="history.html" class="nav-item active flex flex-col items-center">
+            <span class="text-xl">🕒</span>
+            <span class="text-[9px] font-bold mt-1">HISTORY</span>
+            <div class="active-dot"></div>
+        </a>
+        <a href="wallet.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">💼</span>
+            <span class="text-[9px] font-bold mt-1">WALLET</span>
+        </a>
+        <a href="profile.html" class="nav-item flex flex-col items-center">
+            <span class="text-xl">👤</span>
+            <span class="text-[9px] font-bold mt-1">PROFILE</span>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
