@@ -1,55 +1,52 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wallet - Ethio Bingo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="margin: 0;">MY WALLET</h2>
-            <span style="color: #3b82f6; font-size: 10px; font-weight: bold;">VERIFIED</span>
-        </div>
-        <p id="user-phone" style="color: #8b949e; font-size: 12px; margin-top: 5px;">2519********</p>
+        <header>
+            <span class="logo">MY WALLET</span>
+        </header>
 
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-            <div style="flex: 1; background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 10px; color: #10b981;">🏆 MAIN WALLET</p>
-                <h2 style="margin: 5px 0;"><span id="main-balance">0</span> <small style="font-size: 12px; color: #8b949e;">ETB</small></h2>
+        <main class="main-content">
+            <div class="balance-card">
+                <p>Current Balance</p>
+                <h1>100.00 ETB</h1>
             </div>
-            <div style="flex: 1; background: #161b22; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
-                <p style="margin: 0; font-size: 10px; color: #3b82f6;">♾️ PLAY WALLET</p>
-                <h2 style="margin: 5px 0;"><span id="play-balance">0</span> <small style="font-size: 12px; color: #8b949e;">ETB</small></h2>
+
+            <div class="wallet-actions">
+                <button class="action-btn deposit">Deposit (ብር አስገባ)</button>
+                <button class="action-btn withdraw">Withdraw (ብር አውጣ)</button>
             </div>
-        </div>
+        </main>
 
-        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; padding: 0 5px;">
-            <p style="color: #8b949e; font-size: 14px;">TOTAL AVAILABLE</p>
-            <h2 style="margin: 0;"><span id="total-balance">0</span> ETB</h2>
-        </div>
-
-        <hr class="divider" style="margin: 20px 0; opacity: 0.2;">
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <p style="color: #3b82f6; font-size: 12px; font-weight: bold; margin: 0;">RECENT ACTIVITY</p>
-            <span style="color: #8b949e; font-size: 10px;">0 TOTAL</span>
-        </div>
-
-        <div class="history-list" style="overflow-y: auto; flex-grow: 1;">
-            <div style="text-align: center; margin-top: 40px; color: #484f58;">
-                <p>No recent activity yet.</p>
-            </div>
-        </div>
-
-        <div class="bottom-nav">
-            <div class="nav-item" onclick="window.location.href='index.html'">🎮<br>GAME</div>
-            <div class="nav-item" onclick="window.location.href='scores.html'">🏆<br>SCORES</div>
-            <div class="nav-item" onclick="window.location.href='history.html'">🕒<br>HISTORY</div>
-            <div class="nav-item active" onclick="window.location.href='wallet.html'">💼<br>WALLET</div>
-            <div class="nav-item" onclick="window.location.href='profile.html'">👤<br>PROFILE</div>
-        </div>
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-gamepad"></i>
+                <span>GAME</span>
+            </a>
+            <a href="scores.html" class="nav-item">
+                <i class="fas fa-trophy"></i>
+                <span>SCORES</span>
+            </a>
+            <a href="history.html" class="nav-item">
+                <i class="fas fa-history"></i>
+                <span>HISTORY</span>
+            </a>
+            <a href="wallet.html" class="nav-item active">
+                <i class="fas fa-wallet"></i>
+                <span>WALLET</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>PROFILE</span>
+            </a>
+        </nav>
     </div>
 </body>
 </html>
