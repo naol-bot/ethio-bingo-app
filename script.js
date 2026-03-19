@@ -1,75 +1,48 @@
-// 1. የRules መስኮት እንዲከፈትና እንዲዘጋ የሚያደርግ
+// 1. Rules መክፈቻና መዝጊያ
 function toggleRules() {
     const modal = document.getElementById('rulesModal');
-    if (modal.classList.contains('hidden')) {
-        modal.classList.remove('hidden');
-    } else {
-        modal.classList.add('hidden');
+    if (modal) {
+        modal.classList.toggle('hidden');
     }
 }
 
-// 2. Play ቁልፍ ሲነካ መልዕክት እንዲያሳይ
-document.getElementById('playBtn').addEventListener('click', function() {
-    alert("ጨዋታው በቅርቡ ይጀምራል... ⏳🎮\nComing Soon!");
-});
+document.addEventListener('DOMContentLoaded', () => {
 
-// 3. ከስር ያሉ አይኮኖች ሲነኩ እንዲበሩ (Navigation Glow)
-const navItems = document.querySelectorAll('.nav-item');
+    // --- ሀ. Play Button Alert ---
+    const playBtn = document.getElementById('playBtn');
+    if (playBtn) {
+        playBtn.addEventListener('click', () => {
+            alert("ጨዋታው በቅርቡ ይጀምራል... 🎮 \nComing Soon!");
+        });
+    }
 
-navItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // መጀመሪያ የነበረውን የበራ አይኮን አጥፋ
-        navItems.forEach(i => i.classList.remove('active'));
-        // አሁን የተነካውን አብራ
-        this.classList.add('active');
-    });
-});
-// --- Scores Page Logic ---
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleButtons = document.querySelectorAll('.toggle-container button');
-    
-    if (toggleButtons.length > 0) {
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // ሁሉንም አጥፋ
-                toggleButtons.forEach(btn => {
-                    btn.classList.remove('toggle-active');
-                    btn.classList.add('text-gray-500');
+    // --- ለ. Daily/Weekly መቀያየሪያ ሎጂክ ---
+    const container = document.querySelector('.toggle-container');
+    if (container) {
+        const buttons = container.querySelectorAll('button');
+        
+        // እዚህ ጋር ዳታውን የሚይዙ ኤለመንቶችን እንፈልጋለን (ለምሳሌ የዝርዝሩ መያዣ ID 'playerList' ከሆነ)
+        const playerList = document.getElementById('playerList'); 
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Button Visual Change
+                buttons.forEach(b => {
+                    b.classList.remove('toggle-active');
+                    b.classList.add('text-gray-500');
                 });
-                // የተነካውን አብራ
                 this.classList.add('toggle-active');
                 this.classList.remove('text-gray-500');
-                
-                // እዚህ ጋር ዳታውን መቀየር ትችላለህ (ለወደፊቱ)
-                console.log(this.innerText + " list selected");
+
+                // ዳታውን የመቀየር ስራ
+                if (this.innerText.includes("WEEKLY")) {
+                    console.log("Weekly list loading...");
+                    // እዚህ ጋር የ Weekly ተጫዋቾችን ዝርዝር የሚቀይር ኮድ ይታከላል
+                } else {
+                    console.log("Daily list loading...");
+                    // እዚህ ጋር የ Daily ተጫዋቾችን ዝርዝር የሚቀይር ኮድ ይታከላል
+                }
             });
         });
     }
 });
-// በገጹ ላይ ያሉትን ሁሉንም የ toggle ቁልፎች ፈልግ
-const setupToggles = () => {
-    const container = document.querySelector('.toggle-container');
-    if (!container) return;
-
-    const buttons = container.querySelectorAll('button');
-    
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // መጀመሪያ በሁለቱም ላይ ያለውን የነቃ ከለር (toggle-active) አጥፋ
-            buttons.forEach(b => {
-                b.classList.remove('toggle-active');
-                b.classList.add('text-gray-500');
-            });
-            
-            // አሁን የተነካውን ቁልፍ አብራ
-            this.classList.add('toggle-active');
-            this.classList.remove('text-gray-500');
-            
-            // እዚህ ጋር የዝርዝር መረጃውን መቀየር ትችላለህ
-            console.log(this.innerText + " ተመርጧል");
-        });
-    });
-};
-
-// ገጹ ተጭኖ ሲያልቅ ስራውን ይጀምር
-document.addEventListener('DOMContentLoaded', setupToggles);
