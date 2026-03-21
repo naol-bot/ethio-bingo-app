@@ -17,7 +17,7 @@
 
         <div class="flex-grow flex flex-col items-center justify-center -mt-10">
             <p class="text-gray-400 text-sm mb-1">Welcome to</p>
-            <h2 class="text-yellow-500 text-center text-4xl font-black mb-6 italic">ETHIO BINGO</h2>
+            <h2 class="text-yellow-500 text-center text-4xl font-black mb-6">ETHIO BINGO</h2>
 
             <div class="play-card flex flex-col items-center bg-[#1a1a3a]/50 p-10 rounded-[2rem] border border-gray-800 shadow-2xl">
                 <p class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-4 font-bold">Choose your stake</p>
@@ -38,23 +38,24 @@
     <div id="mainGameScreen" class="fixed inset-0 bg-[#0f0c29] z-40 hidden flex flex-col p-2 overflow-y-auto pb-32">
         <div class="sticky top-0 bg-[#0f0c29] z-50 p-2 border-b border-gray-800">
             <div class="flex justify-between items-center mb-2">
-                <button onclick="closeGame()" class="text-[10px] bg-gray-800 px-3 py-1 rounded-lg border border-gray-700">← Back</button>
-                <div id="game-timer" class="bg-yellow-500/10 border border-yellow-600/50 text-yellow-500 font-black px-4 py-1 rounded-xl text-sm transition-all duration-300">
-                    45 s
+                <div class="flex gap-2">
+                    <button onclick="closeGame()" class="text-[10px] bg-gray-800 px-3 py-1 rounded-lg border border-gray-700">← Back</button>
+                    <button onclick="location.reload()" class="text-[10px] bg-blue-600 px-3 py-1 rounded-lg border border-blue-400">Refresh 🔄</button>
                 </div>
+                <h1 class="text-[10px] font-bold opacity-60">ETHIO BINGO</h1>
             </div>
             
             <div class="grid grid-cols-3 gap-1">
                 <div class="bg-gray-900/80 p-1 rounded border border-gray-700 text-center">
-                    <p class="text-[7px] text-gray-400 uppercase tracking-tighter">Main Wallet</p>
+                    <p class="text-[7px] text-gray-400 uppercase">Main Wallet</p>
                     <p id="main-wallet-display" class="text-[11px] font-bold text-white">0</p>
                 </div>
                 <div class="bg-gray-900/80 p-1 rounded border border-gray-700 text-center">
-                    <p class="text-[7px] text-gray-400 uppercase tracking-tighter">Play Wallet</p>
+                    <p class="text-[7px] text-gray-400 uppercase">Play Wallet</p>
                     <p id="play-wallet-display" class="text-[11px] font-bold text-white">0</p>
                 </div>
                 <div class="bg-gray-900/80 p-1 rounded border border-gray-700 text-center">
-                    <p class="text-[7px] text-gray-400 uppercase tracking-tighter">Stake</p>
+                    <p class="text-[7px] text-gray-400 uppercase">Stake</p>
                     <p class="text-[11px] font-bold text-white">10</p>
                 </div>
             </div>
@@ -63,24 +64,33 @@
         <div id="numbers-grid" class="grid grid-cols-8 gap-1.5 mt-4 p-1">
             </div>
 
-        <div id="cartela-section" class="mt-6 p-2 hidden">
+        <div class="flex justify-center my-4">
+            <div id="game-timer" class="bg-yellow-500/10 border border-yellow-600/50 text-yellow-500 font-black px-8 py-2 rounded-2xl text-xl transition-all duration-300 shadow-[0_0_15px_rgba(234,179,8,0.2)]">
+                45 s
+            </div>
+        </div>
+
+        <div id="cartela-section" class="mt-2 p-2 hidden border-t border-gray-800 pt-4">
             <div id="cartela-container" class="flex flex-wrap justify-center gap-4">
                 </div>
         </div>
     </div>
 
-    <div id="rulesModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center p-6 z-50 backdrop-blur-sm">
-        <div class="bg-[#1a1a3a] border border-gray-700 w-full max-w-xs rounded-[2.5rem] p-8 shadow-2xl text-center">
-            <h3 class="text-xl font-bold text-yellow-500 mb-4 italic">የጨዋታው ህግጋት 📜</h3>
-            <p class="text-sm text-gray-300 leading-relaxed mb-6">ለመጀመር የ 10 ብር Stake ይምረጡ። 4 ሰከንድ እስኪቀረው ቁጥር መምረጥ ይችላሉ። የያዙት ካርቴላ ካሸነፈ ገንዘቡ ወደ Main Wallet ይገባል።</p>
-            <button onclick="toggleRules()" class="w-full bg-gray-700 py-3 rounded-xl font-bold text-sm text-white">ተረዳሁ</button>
-        </div>
+    <div class="nav-bar fixed bottom-0 w-full flex justify-around py-4 pb-8 bg-[#0a0a1f] border-t border-gray-900 z-30">
+        <a href="#" class="nav-item active flex flex-col items-center">
+            <span class="text-xl">🎮</span>
+            <span class="text-[9px] font-bold mt-1 uppercase">Game</span>
+        </a>
+        <a href="#" class="nav-item flex flex-col items-center opacity-50"><span class="text-xl">🏆</span></a>
+        <a href="#" class="nav-item flex flex-col items-center opacity-50"><span class="text-xl">🕒</span></a>
+        <a href="#" class="nav-item flex flex-col items-center opacity-50"><span class="text-xl">💼</span></a>
     </div>
 
     <script src="script.js"></script>
     <script>
         function toggleRules() {
-            document.getElementById('rulesModal').classList.toggle('hidden');
+            // Rules toggle function (can be moved to script.js if preferred)
+            alert("ለመጀመር የ 10 ብር Stake ይምረጡ። 4 ሰከንድ እስኪቀረው ቁጥር መምረጥ ይችላሉ።");
         }
     </script>
 </body>
