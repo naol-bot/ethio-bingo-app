@@ -1,100 +1,185 @@
-/* ርዕስ */
-.ethio-title {
-    font-size: 2.5rem !important;
-    font-weight: 900;
-    color: #eab308;
-    font-style: italic;
-    text-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
-    margin-bottom: 20px !important;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+/* መሠረታዊ ቅንጅቶች */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* ካርዱ (በመሃል እንዲሆን) */
-.play-card {
-    width: 85%;
-    max-width: 340px;
-    background-color: #161633;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 35px;
-    padding: 30px 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    margin-left: auto;
-    margin-right: auto;
+body {
+    background-color: #050507; /* በጣም የጠቆረ ዳራ */
+    color: white;
+    overflow: hidden;
+    user-select: none;
 }
 
-/* PLAY Button */
-.play-button {
-    background-color: #00c896;
-    color: #0f0c29;
-    font-size: 1.4rem;
-    font-weight: 900;
-    padding: 14px 0;
-    border-radius: 18px;
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at top, #12121f 0%, #050507 100%);
+}
+
+/* Header */
+.header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text { font-size: 14px; font-weight: bold; color: #888; }
+
+.rules-top-btn {
+    background: #1e1e26;
     border: none;
-    box-shadow: 0 8px 15px rgba(0, 200, 150, 0.2);
+    color: #ccc;
+    padding: 6px 16px;
+    border-radius: 15px;
+    font-size: 13px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.play-button:active {
-    transform: scale(0.96);
+/* Welcome Section */
+.hero-section {
+    text-align: center;
+    margin-top: 50px;
 }
 
-/* Nav Bar */
-.nav-bar {
-    z-index: 100;
+.welcome-msg { font-size: 18px; color: #aaa; }
+
+.main-title {
+    font-size: 45px;
+    font-weight: 900;
+    color: #ffcc00; /* ETHIO BINGO ቢጫ ከለር */
+    text-shadow: 0 0 25px rgba(255, 204, 0, 0.5);
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+/* Stake Card */
+.stake-card {
+    background: #11111a;
+    margin: 40px 25px;
+    padding: 35px 20px;
+    border-radius: 35px;
+    text-align: center;
+    border: 1px solid #1c1c2b;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+.stake-label { font-size: 11px; letter-spacing: 2px; color: #666; font-weight: bold; }
+
+.yellow-line {
+    width: 40px;
+    height: 3px;
+    background: #ffcc00;
+    margin: 10px auto;
+    border-radius: 2px;
+    box-shadow: 0 0 10px #ffcc00;
+}
+
+.play-btn {
+    background: #00c853; /* አረንጓዴ */
+    border: none;
+    color: white;
+    width: 85%;
+    padding: 18px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 0 25px rgba(0, 200, 83, 0.4);
+    cursor: pointer;
+}
+
+.balance-label { font-size: 11px; color: #666; letter-spacing: 1px; }
+.balance-value { font-size: 40px; font-weight: bold; margin-top: 5px; }
+
+/* Rules Overlay (የህጎች ገጽ) */
+.rules-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a10;
+    display: none; /* በ JS ይከፈታል */
+    flex-direction: column;
+    z-index: 2000;
+}
+
+.rules-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-icon { background: #1e1e2a; border: none; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+.rules-tabs {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: #11111a;
+    margin: 10px 20px;
+    border-radius: 15px;
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #555;
+    font-size: 11px;
+    gap: 5px;
+    padding: 10px;
+    flex: 1;
+}
+
+.tab-item.active {
+    color: white;
+    background: #1e1e2a;
+    border-radius: 12px;
+}
+
+/* Bottom Nav */
+.main-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 5px;
+    background: #08080c;
+    border-top: 1px solid #161620;
 }
 
 .nav-item {
-    text-decoration: none;
-    color: #4b5563;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+.nav-item i { font-size: 22px; }
+
+/* Glow Effect ሲነካ */
 .nav-item.active {
-    color: #00c896;
+    color: #00ff88;
+    text-shadow: 0 0 15px #00ff88;
 }
 
-.active-dot {
-    width: 4px;
-    height: 4px;
-    background-color: #00c896;
-    border-radius: 50%;
-    margin-top: 4px;
-    box-shadow: 0 0 8px #00c896;
-}
-/* --- Scores Page Styles --- */
-.user-rank-gradient {
-    background: linear-gradient(to right, #5a32fa, #8c4cff);
-}
-
-.score-card {
-    background-color: rgba(22, 22, 51, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.toggle-container {
-    background-color: #161633;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.toggle-active {
-    background-color: #2a2a5a;
-    color: white !important;
-}
-
-/* Rank Badge Colors */
-.rank-gold { background-color: #eab308; color: #0f0c29; }
-.rank-silver { background-color: #cbd5e1; color: #0f0c29; }
-.rank-bronze { background-color: #f97316; color: #0f0c29; }
-.rank-default { background-color: #1e1e3f; color: #6b7280; }
-/* ለ Scores ገጽ መቀያየሪያ (Toggle) */
-.toggle-container {
-    background-color: #161633;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.toggle-active {
-    background-color: #2a2a5a !important;
-    color: white !important;
+.nav-item:active i {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px #00ff88);
 }
