@@ -1,94 +1,120 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="am">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ETHIO BINGO</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS እዚህ ተጠቃሏል */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: #050507; color: white; overflow: hidden; }
+        .app-container { height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at top, #12121f 0%, #050507 100%); }
+        
+        /* Header */
+        .header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .rules-top-btn { background: #1e1e26; border: none; color: #ccc; padding: 6px 16px; border-radius: 15px; cursor: pointer; }
+
+        /* Welcome Page */
+        .hero-section { text-align: center; margin-top: 50px; }
+        .main-title { font-size: 45px; font-weight: 900; color: #ffcc00; text-shadow: 0 0 20px rgba(255, 204, 0, 0.5); margin-top: 5px; }
+
+        /* Stake Card */
+        .stake-card { background: #11111a; margin: 40px 25px; padding: 35px 20px; border-radius: 35px; text-align: center; border: 1px solid #1c1c2b; }
+        .play-btn { background: #00c853; border: none; color: white; width: 85%; padding: 18px; border-radius: 20px; font-size: 24px; font-weight: bold; margin: 25px 0; box-shadow: 0 0 20px rgba(0, 200, 83, 0.4); cursor: pointer; }
+        .balance-value { font-size: 40px; font-weight: bold; }
+
+        /* Rules Overlay - ዋናው መፍትሄ እዚህ ነው */
+        #rules-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a10; z-index: 9999; display: none; flex-direction: column; }
+        .rules-header { padding: 20px; display: flex; align-items: center; gap: 20px; background: #11111a; }
+        .back-btn { background: #1e1e2a; border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+        
+        .rules-tabs { display: flex; justify-content: space-around; padding: 10px; background: #11111a; margin: 10px; border-radius: 15px; }
+        .tab-item { display: flex; flex-direction: column; align-items: center; color: #555; font-size: 11px; padding: 10px; flex: 1; cursor: pointer; }
+        .tab-item.active { color: white; background: #1e1e2a; border-radius: 12px; }
+        
+        .rules-body { padding: 20px; flex: 1; overflow-y: auto; }
+        .rule-step { display: flex; gap: 10px; background: #161622; padding: 15px; border-radius: 15px; margin-bottom: 10px; text-align: left; }
+        .step-num { background: #4444ff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        
+        /* Bottom Nav */
+        .main-nav { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 15px 5px; background: #08080c; border-top: 1px solid #161620; }
+        .nav-item { color: #444; display: flex; flex-direction: column; align-items: center; font-size: 10px; gap: 5px; cursor: pointer; }
+        .nav-item.active { color: #00ff88; text-shadow: 0 0 15px #00ff88; }
+    </style>
 </head>
 <body>
+
     <div class="app-container">
-        
-        <div id="home-page" class="page active">
-            <div class="header">
-                <span class="logo-text">ETHIO BINGO</span>
-                <button class="rules-top-btn" onclick="openRules()">Rules</button>
-            </div>
-
-            <div class="hero-section">
-                <p class="welcome-msg">Welcome to</p>
-                <h1 class="main-title">ETHIO BINGO</h1>
-            </div>
-
-            <div class="stake-card">
-                <p class="stake-label">CHOOSE YOUR STAKE</p>
-                <div class="yellow-line"></div>
-                <button class="play-btn" onclick="startGame()">
-                    <i class="fas fa-play"></i> PLAY 10
-                </button>
-                <p class="balance-label">WALLET BALANCE</p>
-                <p class="balance-value">0</p>
-            </div>
+        <div class="header">
+            <span style="color:#888">ETHIO BINGO</span>
+            <button class="rules-top-btn" onclick="openRules()">Rules</button>
         </div>
 
-        <div id="rules-overlay" class="rules-overlay">
+        <div class="hero-section">
+            <p style="color:#aaa">Welcome to</p>
+            <h1 class="main-title">ETHIO BINGO</h1>
+        </div>
+
+        <div class="stake-card">
+            <p style="font-size:11px; color:#666">CHOOSE YOUR STAKE</p>
+            <button class="play-btn">PLAY 10</button>
+            <p style="font-size:11px; color:#666">WALLET BALANCE</p>
+            <p class="balance-value">0</p>
+        </div>
+
+        <div id="rules-overlay">
             <div class="rules-header">
-                <button class="back-icon" onclick="closeRules()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <h2 class="rules-title">ቢንጎ ህጎች</h2>
+                <button class="back-btn" onclick="closeRules()"><i class="fas fa-chevron-left"></i></button>
+                <h2 style="font-size:18px">ቢንጎ ህጎች</h2>
             </div>
-
             <div class="rules-tabs">
-                <div class="tab-item active" onclick="switchTab(0)">
-                    <i class="fas fa-joker"></i>
-                    <span>መረጣ</span>
-                </div>
-                <div class="tab-item" onclick="switchTab(1)">
-                    <i class="fas fa-gamepad"></i>
-                    <span>ጨዋታ</span>
-                </div>
-                <div class="tab-item" onclick="switchTab(2)">
-                    <i class="fas fa-trophy"></i>
-                    <span>አሸናፊ</span>
-                </div>
-                <div class="tab-item" onclick="switchTab(3)">
-                    <i class="fas fa-ban"></i>
-                    <span>ቅጣት</span>
-                </div>
+                <div class="tab-item active" onclick="switchTab(0)"><i class="fas fa-joker"></i><span>መረጣ</span></div>
+                <div class="tab-item" onclick="switchTab(1)"><i class="fas fa-gamepad"></i><span>ጨዋታ</span></div>
+                <div class="tab-item" onclick="switchTab(2)"><i class="fas fa-trophy"></i><span>አሸናፊ</span></div>
+                <div class="tab-item" onclick="switchTab(3)"><i class="fas fa-ban"></i><span>ቅጣት</span></div>
             </div>
-
-            <div id="rules-content-area" class="rules-body">
+            <div id="rules-content" class="rules-body">
                 </div>
         </div>
 
         <div class="main-nav">
-            <div class="nav-item active" onclick="setNavActive(this)">
-                <i class="fas fa-gamepad"></i>
-                <span>GAME</span>
-            </div>
-            <div class="nav-item" onclick="setNavActive(this)">
-                <i class="fas fa-trophy"></i>
-                <span>SCORES</span>
-            </div>
-            <div class="nav-item" onclick="setNavActive(this)">
-                <i class="fas fa-history"></i>
-                <span>HISTORY</span>
-            </div>
-            <div class="nav-item" onclick="setNavActive(this)">
-                <i class="fas fa-wallet"></i>
-                <span>WALLET</span>
-            </div>
-            <div class="nav-item" onclick="setNavActive(this)">
-                <i class="fas fa-user"></i>
-                <span>PROFILE</span>
-            </div>
+            <div class="nav-item active"><i class="fas fa-gamepad"></i><span>GAME</span></div>
+            <div class="nav-item"><i class="fas fa-trophy"></i><span>SCORES</span></div>
+            <div class="nav-item"><i class="fas fa-history"></i><span>HISTORY</span></div>
+            <div class="nav-item"><i class="fas fa-wallet"></i><span>WALLET</span></div>
+            <div class="nav-item"><i class="fas fa-user"></i><span>PROFILE</span></div>
         </div>
-
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        const rulesData = [
+            { title: "መረጣ", content: '<div class="rule-step"><div class="step-num">1</div><p><b>ካርድ ይምረጡ፦</b> ከ1-300 ካርድ ውስጥ አንዱን እንመርጣለን።</p></div>' },
+            { title: "ጨዋታ", content: '<div class="rule-step"><div class="step-num">1</div><p><b>መግቢያ፦</b> በመረጥነው ቁጥር መሰረት ካርድ እናገኛለን።</p></div>' },
+            { title: "አሸናፊ", content: '<div style="background:orange; color:black; padding:15px; border-radius:15px"><b>አሸናፊ ለመሆን፦</b> ወደ ጎን፣ ወደ ታች ወይም አራቱን ማዕዘን በመሙላት BINGO ይበሉ!</div>' },
+            { title: "ቅጣት", content: '<div style="border:1px solid red; padding:15px; border-radius:15px; color:red"><b>ቅጣት፦</b> ሳይሞሉ ቢንጎ ካሉ ከጨዋታው ይታገዳሉ!</div>' }
+        ];
+
+        function openRules() {
+            document.getElementById('rules-overlay').style.display = 'flex';
+            switchTab(0);
+        }
+
+        function closeRules() {
+            document.getElementById('rules-overlay').style.display = 'none';
+        }
+
+        function switchTab(idx) {
+            const tabs = document.querySelectorAll('.tab-item');
+            tabs.forEach(t => t.classList.remove('active'));
+            tabs[idx].classList.add('active');
+            document.getElementById('rules-content').innerHTML = rulesData[idx].content;
+        }
+        
+        // Telegram Web App ዝግጁ መሆኑን ማሳወቅ
+        window.Telegram.WebApp.ready();
+    </script>
 </body>
 </html>
-    
