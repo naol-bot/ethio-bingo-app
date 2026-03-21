@@ -1,10 +1,10 @@
-// --- 1. State & Data Initializing ---
-let mainWallet = 50; // Sample data - በኋላ ከ database ጋር ይገናኛል
-let playWallet = 10; // Sample data
+// --- 1. Configurations & State ---
+let mainWallet = 60; // Sample data - ከDatabase ጋር ይገናኛል
+let playWallet = 0;
 let stakeAmount = 10;
 // Refresh ሲደረግ ዳታ እንዳይጠፋ ከ localStorage መጥራት
-let myPicks = JSON.parse(localStorage.getItem('myBingoPicks')) || [];
-let timeLeft = localStorage.getItem('bingoTimer') ? parseInt(localStorage.getItem('bingoTimer')) : 45;
+let myPicks = JSON.parse(localStorage.getItem('dilBingoPicks')) || [];
+let timeLeft = localStorage.getItem('dilBingoTimer') ? parseInt(localStorage.getItem('dilBingoTimer')) : 45;
 let isLocked = false;
 let timerInterval;
 
@@ -27,26 +27,27 @@ generateAllCartelas();
 window.onload = () => {
     updateWalletDisplays();
     // Refresh ከተደረገ እና ጨዋታ ላይ ከነበረ ቀጥታ ወደዛው ይመለሳል
-    if (localStorage.getItem('inGame') === 'true') {
+    if (localStorage.getItem('dilInGame') === 'true') {
         startPlay();
     }
 };
 
 function updateWalletDisplays() {
-    // HTML ላይ ካሉት IDዎች ጋር ማገናኘት
-    if(document.getElementById('main-wallet-display')) {
-        document.getElementById('main-wallet-display').innerText = mainWallet;
-    }
-    if(document.getElementById('play-wallet-display')) {
-        document.getElementById('play-wallet-display').innerText = playWallet;
-    }
+    // Welcome Screen ላይ ያለው Balance
     if(document.getElementById('totalBalanceDisplay')) {
         document.getElementById('totalBalanceDisplay').innerText = mainWallet + playWallet;
+    }
+    // Game Screen ላይ ያሉት Wallet IDs
+    if(document.getElementById('main-wallet-val')) {
+        document.getElementById('main-wallet-val').innerText = mainWallet;
+    }
+    if(document.getElementById('play-wallet-val')) {
+        document.getElementById('play-wallet-val').innerText = playWallet;
     }
 }
 
 function startPlay() {
-    localStorage.setItem('inGame', 'true');
+    localStorage.setItem('dilInGame', 'true');
     document.getElementById('welcomeScreen').classList.add('hidden');
     document.getElementById('mainGameScreen').classList.remove('hidden');
     initNumbersGrid();
@@ -66,9 +67,9 @@ function initNumbersGrid() {
         btn.id = `num-${i}`;
         
         let isPicked = myPicks.includes(i);
-        // ቁጥሮቹ አነስ እንዲሉ እና በረድፍ 8 እንዲሆኑ ተደርጓል
-        btn.className = `text-[10px] py-2 text-center font-black rounded cursor-pointer border transition-all ${
-            isPicked ? 'bg-green-500 border-green-500 text-white shadow-inner scale-95' : 'bg-[#1a2a4a] border-gray-700'
+        // Dil Bingo Style: አነስ ያሉ ቁጥሮች እና ለስላሳ Border
+        btn.className = `text-[10px] py-2 text-center font-bold rounded-xl border transition-all ${
+            isPicked ? 'bg-orange-500 border-orange-400 text-white shadow-lg' : 'bg-gray-800/40 border-gray-700 text-gray-400'
         }`;
         
         btn.onclick = () => toggleNumber(i, btn);
@@ -77,28 +78,27 @@ function initNumbersGrid() {
 }
 
 function toggleNumber(num, el) {
-    if (isLocked) return; // 4 ሰከንድ ሲቀረው መያዝ አይቻልም
+    if (isLocked) return; // 4 ሰከንድ ሲቀረው መቆለፍ
 
     const index = myPicks.indexOf(num);
     if (index > -1) {
-        // Deselect (ማጥፋት)
+        // Deselect
         myPicks.splice(index, 1);
-        el.className = "text-[10px] py-2 text-center font-black rounded cursor-pointer bg-[#1a2a4a] border border-gray-700";
+        el.className = "text-[10px] py-2 text-center font-bold rounded-xl border bg-gray-800/40 border-gray-700 text-gray-400";
     } else {
-        // አዲስ ለመያዝ
-        if (myPicks.length >= 2) return alert("ቢበዛ 2 ካርቴላ ብቻ ነው መያዝ የሚቻለው!");
+        // አዲስ ለመያዝ Wallet Check
+        if (myPicks.length >= 2) return; // ቢበዛ 2 ካርቴላ
         
-        // Wallet Check (ብር መኖሩን ማረጋገጫ)
         if ((mainWallet + playWallet) < stakeAmount) {
-            return alert("Insufficient Balance! እባክዎ መጀመሪያ ተቀማጭ ያድርጉ።");
+            alert("Insufficient Balance! እባክዎ ባላንስ ይሙሉ።");
+            return;
         }
         
         myPicks.push(num);
-        el.className = "text-[10px] py-2 text-center font-black rounded cursor-pointer bg-green-500 border-green-500 text-white scale-105 shadow-lg";
+        el.className = "text-[10px] py-2 text-center font-bold rounded-xl border bg-orange-500 border-orange-400 text-white shadow-lg scale-95";
     }
     
-    // ምርጫውን በ localStorage ማስቀመጥ (Refresh መቋቋም)
-    localStorage.setItem('myBingoPicks', JSON.stringify(myPicks));
+    localStorage.setItem('dilBingoPicks', JSON.stringify(myPicks));
     updateCartelaDisplay();
 }
 
@@ -111,16 +111,16 @@ function startTimer() {
 
     timerInterval = setInterval(() => {
         timeLeft--;
-        localStorage.setItem('bingoTimer', timeLeft);
+        localStorage.setItem('dilBingoTimer', timeLeft);
         timerEl.innerText = timeLeft + " s";
 
-        // ከ 10 ሰከንድ በታች ሲሆን Red መሆን
+        // 🔴 10 ሰከንድ ሲቀረው ቀይ መሆን
         if (timeLeft <= 10 && timeLeft > 0) {
-            timerEl.classList.add('text-red-500', 'border-red-500', 'bg-red-500/20', 'animate-pulse');
-            timerEl.classList.remove('text-yellow-500');
+            timerEl.classList.replace('text-yellow-500', 'text-red-500');
+            timerEl.classList.add('animate-pulse', 'border-red-500');
         }
 
-        // ከ 4 ሰከንድ በታች ሲሆን መቆለፍ
+        // 🔒 4 ሰከንድ ሲቀረው መቆለፍ
         if (timeLeft <= 4 && timeLeft > 0) {
             isLocked = true;
             timerEl.innerText = "LOCKED";
@@ -128,10 +128,9 @@ function startTimer() {
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            localStorage.removeItem('bingoTimer');
-            timerEl.innerText = "STARTING GAME...";
-            // ሰዓቱ ሲያልቅ የሚፈጠረውን የጨዋታ ሂደት እዚህ እንቀጥላለን
-            timerEl.classList.replace('text-red-500', 'text-green-500');
+            timerEl.innerText = "STARTING...";
+            timerEl.classList.remove('animate-pulse');
+            // እዚህ ጋር የኳስ ማውጫውን ፈንክሽን እንጠራለን
         }
     }, 1000);
 }
@@ -142,39 +141,37 @@ function updateCartelaDisplay() {
     const container = document.getElementById('cartela-container');
     
     if (!container) return;
-
     if (myPicks.length === 0) {
         section.classList.add('hidden');
         return;
     }
 
     section.classList.remove('hidden');
-    container.innerHTML = ''; // ማጽዳት
+    container.innerHTML = '';
     
     myPicks.forEach(num => {
         const card = BINGO_DATA[num];
         let gridHtml = '';
         
-        // Header (B-I-N-G-O) ከለር ያላቸው
-        const headerColors = ['bg-blue-600', 'bg-purple-600', 'bg-pink-600', 'bg-green-600', 'bg-orange-600'];
+        // Header Colors (B-I-N-G-O) - በፎቶው መሰረት
+        const colors = ['bg-blue-600', 'bg-purple-600', 'bg-pink-600', 'bg-green-600', 'bg-orange-600'];
         ['B','I','N','G','O'].forEach((h, i) => {
-            gridHtml += `<div class="${headerColors[i]} text-[9px] py-1 text-center font-black text-white">${h}</div>`;
+            gridHtml += `<div class="${colors[i]} text-[9px] py-1 text-center font-black text-white">${h}</div>`;
         });
 
-        // 5x5 Grid (ቁጥሮችን መደርደር)
+        // 5x5 Grid
         for (let r = 0; r < 5; r++) {
             ['B','I','N','G','O'].forEach(col => {
                 let val = card[col][r];
-                gridHtml += `<div class="bg-white text-black text-[11px] h-8 flex items-center justify-center font-bold border border-gray-100 shadow-sm">
+                gridHtml += `<div class="bg-white text-black text-[11px] h-8 flex items-center justify-center font-bold border border-gray-100">
                     ${val === "⭐" ? "<span class='text-yellow-500 text-lg'>⭐</span>" : val}
                 </div>`;
             });
         }
 
-        // የካርቴላው ካርድ ዲዛይን
         container.innerHTML += `
-            <div class="w-[145px] bg-white p-1 rounded-xl shadow-2xl overflow-hidden border-2 border-orange-500 transition-all transform hover:scale-105">
-                <div class="bg-orange-500 text-white text-[10px] text-center font-black py-1 mb-1 uppercase tracking-tighter">CARTEL #${num}</div>
+            <div class="w-[155px] bg-white p-1 rounded-2xl shadow-2xl overflow-hidden border-2 border-orange-500 transform transition-all">
+                <div class="bg-orange-500 text-white text-[10px] text-center font-black py-1 mb-1 italic uppercase">Cartel #${num}</div>
                 <div class="grid grid-cols-5 gap-[1px] bg-gray-200 border border-gray-200">
                     ${gridHtml}
                 </div>
@@ -183,9 +180,9 @@ function updateCartelaDisplay() {
 }
 
 function closeGame() {
-    // ሁሉንም ዳታ አጽድቶ ወደ ፊት ገጽ መመለስ
-    localStorage.removeItem('inGame');
-    localStorage.removeItem('bingoTimer');
-    localStorage.removeItem('myBingoPicks');
-    location.reload(); 
+    // ሁሉንም ዳታ አጽድቶ ወደ መጀመሪያው ገጽ መመለስ
+    localStorage.removeItem('dilInGame');
+    localStorage.removeItem('dilBingoTimer');
+    localStorage.removeItem('dilBingoPicks');
+    location.reload();
 }
